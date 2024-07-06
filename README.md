@@ -65,14 +65,50 @@ To run this project locally, follow these steps:
 
 
 ## Screenshots
+### Login Page
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/29ddb425-b6dc-4d1f-a044-5cd4f1e1eeb5)
+
 ### Home Page
 ![Home Page](path_to_image)
 
-### Dashboard
-![Dashboard](path_to_image)
 
-### Invoice Page
-![Invoice Page](path_to_image)
+
+### Dashboard
+
+![Dashboard](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/4be7f900-52d3-468e-9b0d-68e34e06fc42)
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/60185960-af0d-43b7-bbdb-f6e79910eeef)
+
+### Add vehicle Section
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/d694f703-a303-48a0-9875-798cc828f916)
+
+### Vehicle Details 
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/989b2036-1b6b-448f-9645-76cad7634a3c)
+
+### Billing Section 
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/281cb9cf-9ab1-4a59-83e1-480d6f16cf1f)
+
+### Enquiry Section
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/b9f9a2f9-d4e2-411f-b20d-0424695d4eb2)
+
+### Journey Section
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/30508dce-cd61-4eff-90a2-0bdfbdfb7359)
+
+#### Example 
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/e5c927ea-51e1-4bb1-9274-3ba1019dc50c)
+
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/ea6c56fa-e594-433f-aa3e-5799cb7b401b)
+
+
+
+### Invoice Page After Journey
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/5c51388a-d890-4ecd-a571-9628ed562337)
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
@@ -83,12 +119,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 - **Intel Unity Program** for project support
 - **GLA University** for mentorship and resources
-- Libraries: NumPy, Zendpanda, Geopanda, SleepleteJS
+
 
 ## Contact
-- **Krishna Sharma**
-  - Email: [your-email@example.com](mailto:your-email@example.com)
-  - GitHub: [your-github-username](https://github.com/your-github-username)
+- **Mayank Sharma**
+  - Email: [mayank.sharma_cs.h23@gla.ac.in](mailto:mayank.sharma_cs.h23@gla.ac.in)
+- **Jatin Khetan**
+  - Email: [jatin.khetan_cs.h23@gla.ac.in](mailto:jatin.khetan_cs.h23@gla.ac.in) 
+ 
 
+    
 
 
