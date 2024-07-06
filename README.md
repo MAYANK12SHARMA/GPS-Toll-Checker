@@ -63,4 +63,32 @@ To run this project locally, follow these steps:
 3. Connect the Arduino and GSM800 module to start tracking.
 4. View toll charges, invoices, and penalty warnings on your dashboard.
 
-## Project Structure
+
+## Screenshots
+### Home Page
+![Home Page](path_to_image)
+
+### Dashboard
+![Dashboard](path_to_image)
+
+### Invoice Page
+![Invoice Page](path_to_image)
+
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+- **Intel Unity Program** for project support
+- **GLA University** for mentorship and resources
+- Libraries: NumPy, Zendpanda, Geopanda, SleepleteJS
+
+## Contact
+- **Krishna Sharma**
+  - Email: [your-email@example.com](mailto:your-email@example.com)
+  - GitHub: [your-github-username](https://github.com/your-github-username)
+
+
+
