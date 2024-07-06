@@ -34,7 +34,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/your-username/gps-toll-based-system.git
+    git clone https://github.com/MAYANK12SHARMA/GPS-Toll-Checker.git
     ```
 
 2. **Navigate to the project directory**
@@ -65,13 +65,14 @@ To run this project locally, follow these steps:
 
 
 ## Screenshots
+
+### Sign up page
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/52689bdb-19af-4674-95bf-65f9d441a839)
+
 ### Login Page
+
 ![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/29ddb425-b6dc-4d1f-a044-5cd4f1e1eeb5)
-
-### Home Page
-![Home Page](path_to_image)
-
-
 
 ### Dashboard
 
@@ -87,6 +88,20 @@ To run this project locally, follow these steps:
 
 ![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/989b2036-1b6b-448f-9645-76cad7634a3c)
 
+### Journey Section
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/30508dce-cd61-4eff-90a2-0bdfbdfb7359)
+
+#### Example 
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/e5c927ea-51e1-4bb1-9274-3ba1019dc50c)
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/ea6c56fa-e594-433f-aa3e-5799cb7b401b)
+
+### Invoice Page After Journey
+
+![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/5c51388a-d890-4ecd-a571-9628ed562337)
+
+
 ### Billing Section 
 
 ![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/281cb9cf-9ab1-4a59-83e1-480d6f16cf1f)
@@ -95,20 +110,7 @@ To run this project locally, follow these steps:
 
 ![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/b9f9a2f9-d4e2-411f-b20d-0424695d4eb2)
 
-### Journey Section
 
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/30508dce-cd61-4eff-90a2-0bdfbdfb7359)
-
-#### Example 
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/e5c927ea-51e1-4bb1-9274-3ba1019dc50c)
-
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/ea6c56fa-e594-433f-aa3e-5799cb7b401b)
-
-
-
-### Invoice Page After Journey
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/5c51388a-d890-4ecd-a571-9628ed562337)
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
