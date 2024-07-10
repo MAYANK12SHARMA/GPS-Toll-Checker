@@ -39,7 +39,7 @@ To run this project locally, follow these steps:
 
 2. **Navigate to the project directory**
     ```bash
-    cd gps-toll-based-system
+    cd GPS_Toll_Tax
     ```
 
 3. **Install the required dependencies**
