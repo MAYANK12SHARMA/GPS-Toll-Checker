@@ -126,10 +126,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 - **Mayank Sharma**
   - Email: [mayank.sharma_cs.h23@gla.ac.in](mailto:mayank.sharma_cs.h23@gla.ac.in)
-- **Jatin Khetan**
-  - Email: [jatin.khetan_cs.h23@gla.ac.in](mailto:jatin.khetan_cs.h23@gla.ac.in) 
- 
 
-    
 
 
