@@ -1,4 +1,3 @@
-<img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/1514ca9c-e1ed-47e5-b811-8f4a3129de25" /># GPS Toll-Based System
 
 ![image](https://github.com/user-attachments/assets/2a836d30-73b7-4b3d-b12e-97af0445ae21)
 
@@ -79,6 +78,8 @@ To run this project locally, follow these steps:
 <img width="1765" height="997" alt="Screenshot 2026-08-27 004608" src="https://github.com/user-attachments/assets/f5ed3885-5cbf-4522-a12f-b89dcad930e3" />
 
 <img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/ef8db307-93ed-4fa4-9508-3975a61befce" />
+
+<img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/1514ca9c-e1ed-47e5-b811-8f4a3129de25" /># GPS Toll-Based System
 
 
 ## Contributing
