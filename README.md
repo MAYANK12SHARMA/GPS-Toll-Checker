@@ -1,4 +1,4 @@
-# GPS Toll-Based System
+<img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/1514ca9c-e1ed-47e5-b811-8f4a3129de25" /># GPS Toll-Based System
 
 ![image](https://github.com/user-attachments/assets/2a836d30-73b7-4b3d-b12e-97af0445ae21)
 
@@ -68,50 +68,17 @@ To run this project locally, follow these steps:
 
 ## Screenshots
 
-### Sign up page
+<img width="1917" height="1078" alt="Screenshot 2026-08-27 003909" src="https://github.com/user-attachments/assets/1831d0b5-43fe-415f-9747-daa6dfcb65e0" />
 
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/52689bdb-19af-4674-95bf-65f9d441a839)
+<img width="1917" height="1078" alt="Screenshot 2026-08-27 003917" src="https://github.com/user-attachments/assets/232f95db-424b-48e0-9f60-b15e8b373fba" />
 
-### Login Page
+<img width="1917" height="1078" alt="Screenshot 2026-08-27 004544" src="https://github.com/user-attachments/assets/bc90b5c8-acd2-493a-851f-bd98408c97f1" />
 
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/29ddb425-b6dc-4d1f-a044-5cd4f1e1eeb5)
+<img width="1917" height="1078" alt="Screenshot 2026-08-27 004550" src="https://github.com/user-attachments/assets/33b1e172-28d1-45c7-846b-4831ba3d40dc" />
 
-### Dashboard
+<img width="1765" height="997" alt="Screenshot 2026-08-27 004608" src="https://github.com/user-attachments/assets/f5ed3885-5cbf-4522-a12f-b89dcad930e3" />
 
-![Dashboard](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/4be7f900-52d3-468e-9b0d-68e34e06fc42)
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/60185960-af0d-43b7-bbdb-f6e79910eeef)
-
-### Add vehicle Section
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/d694f703-a303-48a0-9875-798cc828f916)
-
-### Vehicle Details 
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/989b2036-1b6b-448f-9645-76cad7634a3c)
-
-### Journey Section
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/30508dce-cd61-4eff-90a2-0bdfbdfb7359)
-
-#### Example 
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/e5c927ea-51e1-4bb1-9274-3ba1019dc50c)
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/ea6c56fa-e594-433f-aa3e-5799cb7b401b)
-
-### Invoice Page After Journey
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/5c51388a-d890-4ecd-a571-9628ed562337)
-
-
-### Billing Section 
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/281cb9cf-9ab1-4a59-83e1-480d6f16cf1f)
-
-### Enquiry Section
-
-![image](https://github.com/MAYANK12SHARMA/GPS-Toll-Checker/assets/145884197/b9f9a2f9-d4e2-411f-b20d-0424695d4eb2)
-
+<img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/ef8db307-93ed-4fa4-9508-3975a61befce" />
 
 
 ## Contributing
