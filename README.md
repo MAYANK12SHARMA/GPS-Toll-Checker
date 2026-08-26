@@ -79,8 +79,7 @@ To run this project locally, follow these steps:
 
 <img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/ef8db307-93ed-4fa4-9508-3975a61befce" />
 
-<img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/1514ca9c-e1ed-47e5-b811-8f4a3129de25" /># GPS Toll-Based System
-
+<img width="1152" height="942" alt="Screenshot 2026-08-27 004614" src="https://github.com/user-attachments/assets/1514ca9c-e1ed-47e5-b811-8f4a3129de25" />
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
