@@ -1,235 +1,1222 @@
 {% load static %}
 
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Invoice Receipt</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>GPS Toller - Invoice Receipt</title>
+    
+    <link rel="icon" type="image/png" href="{% static 'img/logo1.png' %}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+      /* =====================================================
+                                                                                           GLOBAL
+                                                                        ====================================================== */
+    
+      * {
+        box-sizing: border-box;
+      }
+    
+      html {
+        background: #000000;
+      }
+    
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        background: #000000;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+      }
+    
+      .invoice-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+    
+    
+      /* =====================================================
+                                                                                           INVOICE CARD
+                                                                        ====================================================== */
+    
+      .invoice-card {
+        width: 100%;
+        background: #101010;
+        border: 1px solid #292929;
+        border-radius: 20px;
+        overflow: hidden;
+    
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.65);
+      }
+    
+    
+      /* =====================================================
+                                                                                           HEADER
+                                                                        ====================================================== */
+    
+      .invoice-header {
+        background: #080808;
+        color: #ffffff;
+    
+        padding: 32px 40px;
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        gap: 30px;
+    
+        border-bottom: 1px solid #292929;
+      }
+    
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+    
+      .brand img {
+        width: 62px;
+        height: 62px;
+    
+        object-fit: contain;
+    
+        border-radius: 12px;
+      }
+    
+      .brand-name {
+        font-size: 25px;
+        font-weight: 800;
+    
+        letter-spacing: 1px;
+    
+        color: #ffffff;
+      }
+    
+      .brand-subtitle {
+        display: block;
+    
+        margin-top: 5px;
+    
+        font-size: 10px;
+        font-weight: 700;
+    
+        color: #d4af37;
+    
+        letter-spacing: 2px;
+      }
+    
+      .invoice-title {
+        text-align: right;
+      }
+    
+      .invoice-title h1 {
+        margin: 0;
+    
+        font-size: 29px;
+        font-weight: 800;
+    
+        color: #ffffff;
+      }
+    
+      .invoice-title p {
+        margin: 8px 0 0;
+    
+        color: #999999;
+    
+        font-size: 12px;
+      }
+    
+    
+      /* =====================================================
+                                                                                           BODY
+                                                                        ====================================================== */
+    
+      .invoice-body {
+        padding: 40px;
+        background: #101010;
+      }
+    
+    
+      /* =====================================================
+                                                                                           META
+                                                                        ====================================================== */
+    
+      .invoice-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        gap: 20px;
+    
+        padding: 17px 20px;
+    
+        margin-bottom: 35px;
+    
+        background: #171717;
+    
+        border: 1px solid #333333;
+    
+        border-radius: 12px;
+      }
+    
+      .invoice-meta div {
+        min-width: 0;
+      }
+    
+      .invoice-meta span {
+        color: #888888;
+    
+        font-size: 11px;
+        font-weight: 600;
+    
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+      }
+    
+      .invoice-meta strong {
+        display: inline-block;
+    
+        margin-top: 5px;
+    
+        color: #ffffff;
+    
+        font-size: 13px;
+        font-weight: 700;
+    
+        word-break: break-word;
+      }
+    
+    
+      /* =====================================================
+                                                                                       SERVICE / CUSTOMER
+                                                                        ====================================================== */
+    
+      .top-information {
+        display: grid;
+    
+        grid-template-columns: 1fr 1fr;
+    
+        gap: 30px;
+    
+        margin-bottom: 35px;
+      }
+    
+      .information-box {
+        padding: 22px;
+    
+        background: #151515;
+    
+        border: 1px solid #292929;
+    
+        border-radius: 14px;
+      }
+    
+      .information-title {
+        margin-bottom: 12px;
+    
+        color: #d4af37;
+    
+        font-size: 11px;
+        font-weight: 800;
+    
+        letter-spacing: 1.4px;
+    
+        text-transform: uppercase;
+      }
+    
+      .information-box h3 {
+        margin: 0 0 8px;
+    
+        color: #ffffff;
+    
+        font-size: 17px;
+        font-weight: 800;
+      }
+    
+      .information-box p {
+        margin: 5px 0;
+    
+        color: #999999;
+    
+        font-size: 12px;
+    
+        line-height: 1.6;
+      }
+    
+      .customer-box {
+        text-align: right;
+      }
+    
+    
+      /* =====================================================
+                                                                                           SECTION TITLE
+                                                                        ====================================================== */
+    
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    
+        margin: 32px 0 13px;
+    
+        color: #ffffff;
+    
+        font-size: 15px;
+        font-weight: 800;
+      }
+    
+      .gold {
+        color: #d4af37;
+      }
+    
+    
+      /* =====================================================
+                                                                                           TABLE
+                                                                        ====================================================== */
+    
+      .table-wrapper {
+        width: 100%;
+    
+        overflow-x: auto;
+    
+        border: 1px solid #292929;
+    
+        border-radius: 12px;
+    
+        background: #141414;
+      }
+    
+      table {
+        width: 100%;
+    
+        border-collapse: collapse;
+    
+        min-width: 650px;
+      }
+    
+      th {
+        padding: 14px 10px;
+    
+        background: #080808;
+    
+        color: #d4af37;
+    
+        border-bottom: 1px solid #333333;
+    
+        font-size: 10px;
+        font-weight: 800;
+    
+        text-transform: uppercase;
+    
+        letter-spacing: 0.5px;
+    
+        text-align: center;
+    
+        white-space: nowrap;
+      }
+    
+      td {
+        padding: 14px 10px;
+    
+        background: #141414;
+    
+        color: #dddddd;
+    
+        border-bottom: 1px solid #272727;
+    
+        font-size: 12px;
+    
+        text-align: center;
+    
+        vertical-align: middle;
+      }
+    
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+    
+      tbody tr:hover td {
+        background: #191919;
+      }
+    
+      td strong {
+        color: #d4af37;
+        font-weight: 800;
+      }
+    
+    
+      /* =====================================================
+                                                                                     HIGHWAY DISTANCE LIST
+                                                                        ====================================================== */
+    
+      td div {
+        padding: 2px 0;
+    
+        color: #cccccc;
+    
+        font-size: 11px;
+      }
+    
+    
+      /* =====================================================
+                                                                                           TOTAL
+                                                                        ====================================================== */
+    
+      .total-section {
+        display: flex;
+    
+        justify-content: flex-end;
+    
+        margin-top: 30px;
+      }
+    
+      .total-box {
+        width: 100%;
+        max-width: 350px;
+    
+        overflow: hidden;
+    
+        border: 1px solid #333333;
+    
+        border-radius: 14px;
+    
+        background: #151515;
+      }
+    
+      .total-row {
+        display: flex;
+    
+        justify-content: space-between;
+        align-items: center;
+    
+        gap: 20px;
+    
+        padding: 14px 18px;
+    
+        color: #aaaaaa;
+    
+        font-size: 12px;
+    
+        border-bottom: 1px solid #292929;
+      }
+    
+      .total-row strong {
+        color: #ffffff;
+      }
+    
+      .total-row.grand-total {
+        padding: 17px 18px;
+    
+        background: #080808;
+    
+        color: #ffffff;
+    
+        border-bottom: none;
+    
+        font-size: 18px;
+        font-weight: 800;
+      }
+    
+      .total-row.grand-total span:last-child {
+        color: #d4af37;
+      }
+    
+    
+      /* =====================================================
+                                                                                           PAYMENT
+                                                                        ====================================================== */
+    
+      .payment-section {
+        display: grid;
+    
+        grid-template-columns: 1fr 1fr;
+    
+        gap: 25px;
+    
+        margin-top: 35px;
+      }
+    
+      .payment-card {
+        padding: 25px;
+    
+        background: #151515;
+    
+        border: 1px solid #292929;
+    
+        border-radius: 14px;
+      }
+    
+      .payment-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    
+        margin: 0 0 18px;
+    
+        color: #ffffff;
+    
+        font-size: 14px;
+        font-weight: 800;
+      }
+    
+      .payment-card p {
+        margin: 0;
+    
+        color: #999999;
+    
+        font-size: 12px;
+    
+        line-height: 1.8;
+      }
+    
+      .qr-container {
+        display: flex;
+    
+        flex-direction: column;
+    
+        align-items: center;
+    
+        text-align: center;
+      }
+    
+      .qr-container img {
+        width: 130px;
+        height: 130px;
+    
+        object-fit: contain;
+    
+        padding: 8px;
+    
+        background: #ffffff;
+    
+        border-radius: 8px;
+    
+        margin-bottom: 12px;
+      }
+    
+      .upi {
+        color: #d4af37;
+    
+        font-size: 12px;
+        font-weight: 700;
+      }
+    
+    
+      /* =====================================================
+                                                                                           FOOTER
+                                                                        ====================================================== */
+    
+      .invoice-footer {
+        display: flex;
+    
+        justify-content: space-between;
+        align-items: center;
+    
+        gap: 20px;
+    
+        padding: 25px 40px;
+    
+        background: #080808;
+    
+        border-top: 1px solid #292929;
+      }
+    
+      .invoice-footer p {
+        margin: 0;
+    
+        color: #bbbbbb;
+    
+        font-size: 11px;
+    
+        line-height: 1.5;
+      }
+    
+      .footer-note {
+        margin-top: 6px !important;
+    
+        color: #666666 !important;
+    
+        font-size: 9px !important;
+      }
+    
+    
+      /* =====================================================
+                                                                                         PRINT BUTTON
+                                                                        ====================================================== */
+    
+      .print-button {
+        display: inline-flex;
+    
+        align-items: center;
+        justify-content: center;
+    
+        gap: 8px;
+    
+        border: none;
+    
+        background: #d4af37;
+    
+        color: #080808;
+    
+        padding: 11px 20px;
+    
+        border-radius: 8px;
+    
+        font-family: inherit;
+    
+        font-size: 12px;
+        font-weight: 800;
+    
+        cursor: pointer;
+    
+        text-decoration: none;
+    
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+    
+      .print-button:hover {
+        background: #e4c45a;
+    
+        transform: translateY(-1px);
+      }
+    
+    
+      /* =====================================================
+                                                                                           RESPONSIVE
+                                                                        ====================================================== */
+    
+      @media (max-width: 768px) {
+    
+        body {
+          padding: 15px 10px;
+        }
+    
+        .invoice-header {
+          padding: 25px;
+    
+          flex-direction: column;
+    
+          align-items: flex-start;
+        }
+    
+        .invoice-title {
+          text-align: left;
+        }
+    
+        .invoice-title h1 {
+          font-size: 25px;
+        }
+    
+        .invoice-body {
+          padding: 22px 18px;
+        }
+    
+        .top-information {
+          grid-template-columns: 1fr;
+        }
+    
+        .customer-box {
+          text-align: left;
+        }
+    
+        .invoice-meta {
+          flex-direction: column;
+    
+          align-items: flex-start;
+        }
+    
+        .invoice-meta div:last-child {
+          text-align: left !important;
+        }
+    
+        .payment-section {
+          grid-template-columns: 1fr;
+        }
+    
+        .total-section {
+          justify-content: stretch;
+        }
+    
+        .total-box {
+          max-width: none;
+        }
+    
+        .invoice-footer {
+          padding: 22px;
+    
+          flex-direction: column;
+    
+          align-items: flex-start;
+        }
+    
+        .print-button {
+          width: 100%;
+        }
+      }
+    
+    
+      @media (max-width: 480px) {
+    
+        body {
+          padding: 8px;
+        }
+    
+        .invoice-card {
+          border-radius: 14px;
+        }
+    
+        .invoice-header {
+          padding: 22px 18px;
+        }
+    
+        .brand img {
+          width: 52px;
+          height: 52px;
+        }
+    
+        .brand-name {
+          font-size: 21px;
+        }
+    
+        .invoice-body {
+          padding: 18px 12px;
+        }
+    
+        .information-box {
+          padding: 18px;
+        }
+    
+        .section-title {
+          font-size: 14px;
+        }
+      }
+    
+    
+      /* =====================================================
+                                                                                            PRINT
+                                                                        ====================================================== */
+    
+      @media print {
+    
+        html,
+        body {
+          background: #ffffff !important;
+        }
+    
+        body {
+          padding: 0;
+        }
+    
+        .invoice-wrapper {
+          max-width: none;
+        }
+    
+        .invoice-card {
+          border: none;
+          border-radius: 0;
+    
+          box-shadow: none;
+        }
+    
+        .print-button {
+          display: none;
+        }
+    
+        .invoice-header,
+        .invoice-footer,
+        .total-row.grand-total,
+        th {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+    
+        .invoice-card,
+        .payment-card,
+        .information-box,
+        .table-wrapper,
+        .invoice-meta {
+          break-inside: avoid;
+        }
+      }
+    </style>
+
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <div class="invoice-wrapper">
 
-<body style="display: flex; justify-content: center;align-items: center; height: 100vh; margin-top:100px;">
- 
-  <table width="70%" border="0" cellspacing="0" cellpadding="0" class="mt-5">
-    <tr>
-      <td width="49%">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td>
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 600; font-size: 18px;" class="mt-5 pt-5 fs-4">Invoice
-                    Receipt</td>
-                </tr>
-                <tr>
-                  <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;">Invoice
-                    Number: {{ uuid_field }}</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 600; font-size: 15px;">Service
-                    Provider</td>
-                </tr>
-                <tr>
-                  <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 400; font-size: 14px;">GLA GPS Toller </td>
-                </tr>
-                <tr>
-                  <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;">GLA UNIVERSITY MATHURA UP  </td>
-                </tr>
-                <tr>
-                <tr>
-                  <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 500; font-size: 13px;" class="fs-6">
-                    Mayank Sharma & Jatin Khetan</td>
-                </tr>
-                <tr>
-                <td>&nbsp;</td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </td>
-      <td width="51%" valign="top">
-        <table width="100%" style="border:0;" cellspacing="0" cellpadding="0">
-          <tr>
-            <td style="text-align:right;"><img src="{% static './img/logo1.png' %}" alt="" width="150" /></td>
-          </tr>
-          <tr>
-            <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;text-align:right;">
-              &nbsp;</td>
-          </tr>
-          <tr>
-            <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;text-align:right;">
-              &nbsp;</td>
-          </tr>
-          <tr>
-            <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 600; font-size: 15px;text-align:right;">
-              Customer Details</td>
-          </tr>
-          <tr>
-            <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;text-align:right;"><span style="font-weight: 600;"> Date: </span>
-              {{ Date }}</td>
-          </tr>
-          
-          <tr>
-            <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;text-align:right;"><span style="font-weight: 600;"> Name: </span>
-              {{ user.username }}</td> <!-- Replace with actual field from your context -->
-          </tr>
-          <tr>
-            <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;text-align:right;">
-             <span style="font-weight: 600;"> Email: </span>{{ user.email }}</td> <!-- Replace with actual field from your context -->
-          </tr>
-         
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-          <thead>
-            <tr>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align: center;"">Travelling From</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align: center;"">Vehicle Type</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align: center;"">Vehicle Number</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align: center;"">Total Time (in Minutes)</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align: center;"">Average Speed (Km/h) </th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align: center;"">Charge (per km)</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="border: 1px solid #ddd; padding: 8px;text-align: center;">{{ starting_point }}</td>
-                <td style="border: 1px solid #ddd; padding: 8px;text-align: center;">{{ vehicle_type }}</td>
-              <td style="border: 1px solid #ddd; padding: 8px;text-align: center;">{{ vehicle_number }}</td>
-              <td style="border: 1px solid #ddd; padding: 8px;text-align: center;">{{ Usertotaltime }}</td>
-              <!-- Replace with actual field from your context -->
-              <td style="border: 1px solid #ddd; padding: 8px;text-align: center;">{{ Average_speed }}</td>
-              <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><strong>₹{{ charge_per_km }}/-</strong></td>
-
-              <!-- Replace with actual field from your context -->
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-          <thead>
-            <tr>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Travelling To</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Total Distance (in km)</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Total Distance on <br>Highway (in km)</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Each Highway Distance</th>
-              <th style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Total Charge</th>
-            </tr>
-          </thead>
-          <tbody>
-           
-            <tr>
-              <td style="border: 1px solid #ddd; padding: 8px;text-align: center;">{{ ending_point }}</td>
-              <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ Usertotaldistance }}</td>
-              <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ Total_km_on_highway }}</td>
-              <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><strong>{% if EachHighwayDistance %}
-                {% for i, j in EachHighwayDistance.items %}
-                    <p>{{ i }} : {{ j }}</p>
-                {% endfor %}
-            {% else %}
-                <p>Invalid</p>
-            {% endif %}
-            </strong></td>
-              <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><strong>₹{{ total_amount }}/-</strong></td>
-            </tr>
-  
-          </tbody>
-          <tfoot>
-            <tr>
-              <th style="border: 1px solid #ddd; padding: 8px;">Total:</th>
-              <th colspan="3" style="border: 1px solid #ddd; padding: 8px;"></th>
-              <th style="border: 1px solid #ddd; padding: 8px;text-align:center;">₹{{ total_amount }}/-</th>
-            </tr>
-          </tfoot>
-        </table>
-      </td>
-    </tr>
-
-    <tr>
-      <td colspan="2">
-        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-          <thead>
-            <tr>
-              <th colspan="2" style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Amount Pay</th>
-              <th colspan="2" style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Payment Details</th>
-              <th colspan="2" style="border: 2px solid #ddd; padding: 8px; background: #f4f4f4;text-align:center;">Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td rowspan="4" colspan="2" style="border: 1px solid #ddd; padding: 8px;font-size:20px;text-align:center;"><strong>₹{{ total_amount }}/-</strong></td>
-              <td rowspan="4" colspan="3" style="border: 1px solid #ddd; padding: 20px; text-align: center;">
-               <img  src="{% static './img/qr.png' %}" alt="Scan" style="height: 100px;width:100px;" alter="Scan this "><br>UPI-ID : 1234567890@upi
-              </td>
-              <td rowspan="4" colspan="1" style="border: 1px solid #ddd;padding:0px;text-align: center;">  <strong>Dear Consumer,<br>
-
-                Please make the payment within 48 hours to avoid extra charges. <br>
-                Feel free to contact our customer support for any questions.
-                
-                Thank you.
-              </strong>
-                 </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 600; font-size: 13px;">Thank you for
-        using our service</td>
-      <td style="text-align: right;"><p><a class="btn btn-primary btn-hover" href="{% url 'index' %}">Print Recipt</a></p>
-      
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td style="font-family: Verdana, Geneva, sans-serif; font-weight: 300; font-size: 13px;" colspan="2"
-       text-align="center">(This is a computer-generated receipt and does not require a physical signature.)</td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-  </table>
+    <div class="invoice-card">
 
 
+      <!-- =================================================
+                             HEADER
+        ================================================== -->
+
+      <header class="invoice-header">
+
+        <div class="brand">
+
+          <img src="{% static 'img/logo1.png' %}" alt="GPS Toller">
+
+          <div>
+
+            <div class="brand-name">
+              GPS TOLLER
+            </div>
+
+            <span class="brand-subtitle">
+              SMART MOBILITY
+            </span>
+
+          </div>
+
+        </div>
 
 
+        <div class="invoice-title">
 
+          <h1>
+            Invoice Receipt
+          </h1>
+
+          <p>
+            Toll & Journey Payment Receipt
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <!-- =================================================
+                              BODY
+        ================================================== -->
+
+      <div class="invoice-body">
+
+
+        <!-- INVOICE META -->
+
+        <div class="invoice-meta">
+
+          <div>
+
+            <span>
+              Invoice Number
+            </span>
+
+            <br>
+
+            <strong>
+              {{ trip.uuid_field }}
+            </strong>
+
+          </div>
+
+
+          <div style="text-align:right;">
+
+            <span>
+              Invoice Date
+            </span>
+
+            <br>
+
+            <strong>
+              {{ trip.Date }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- SERVICE / CUSTOMER -->
+
+        <div class="top-information">
+
+
+          <div class="information-box">
+
+            <div class="information-title">
+              Service Provider
+            </div>
+
+            <h3>
+              GLA GPS Toller
+            </h3>
+
+            <p>
+              GLA University, Mathura, Uttar Pradesh
+            </p>
+
+            <p>
+              Mayank Sharma & Jatin Khetan
+            </p>
+
+          </div>
+
+
+          <div class="information-box customer-box">
+
+            <div class="information-title">
+              Customer Details
+            </div>
+
+            <h3>
+              {{ trip.user.username }}
+            </h3>
+
+            <p>
+              {{ trip.user.email }}
+            </p>
+
+            <p>
+              Date: {{ trip.Date }}
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- JOURNEY INFORMATION -->
+
+        <div class="section-title">
+
+          <i class="fa-solid fa-route gold"></i>
+
+          Journey Information
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+<th>
+  Travelling From
+</th>
+
+<th>
+  Vehicle Type
+</th>
+
+<th>
+  Vehicle Number
+</th>
+
+<th>
+  Total Time
+</th>
+
+<th>
+  Average Speed
+</th>
+
+<th>
+  Charge / KM
+</th>
+
+</tr>
+</thead>
+
+
+<tbody>
+
+                        <tr>
+<td>
+  {{ trip.starting_point }}
+</td>
+<td>
+  {{ trip.vehicle_type }}
+</td>
+
+<td>
+  {{ trip.vehicle_number }}
+</td>
+
+<td>
+  {{ trip.Usertotaltime }} min
+</td>
+
+                            <td>
+                              {{ trip.Average_speed }} Km/h
+                            </td>
+
+                            <td>
+                              ₹{{ trip.charge_per_km }}
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+</div>
+
+
+<!-- TRIP DETAILS -->
+
+<div class="section-title">
+
+  <i class="fa-solid fa-road gold"></i>
+
+  Trip & Toll Details
+
+</div>
+
+
+<div class="table-wrapper">
+
+  <table>
+
+    <thead>
+
+                        <tr>
+<th>
+  Travelling To
+</th>
+
+<th>
+  Total Distance
+</th>
+
+<th>
+  Highway Distance
+</th>
+
+<th>
+  Each Highway Distance
+</th>
+
+<th>
+  Total Charge
+</th>
+
+</tr>
+
+                    </thead>
+
+
+                    <tbody>
+                    
+                      <tr>
+<td>
+  {{ trip.ending_point }} asdad
+</td>
+
+<td>
+  {{ trip.Usertotaldistance }} km
+</td>
+
+<td>
+  {{ trip.Total_km_on_highway }} km
+</td>
+
+<td>
+
+  {% if EachHighwayDistance %}
+
+  {% for i, j in EachHighwayDistance.items %}
+<div>
+  {{ trip.i }} : {{ trip.j }}
+</div>
+
+{% endfor %}
+
+                                {% else %}
+Invalid
+
+{% endif %}
+
+                            </td>
+
+                            <td>
+
+                                <strong>
+                                  ₹{{ trip.total_amount }}
+                                </strong>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+</div>
+
+
+<!-- TOTAL -->
+
+<div class="total-section">
+
+  <div class="total-box">
+
+    <div class="total-row">
+
+      <span>
+        Total Distance
+      </span>
+
+      <strong>
+        {{ trip.Usertotaldistance }} km
+      </strong>
+
+    </div>
+
+
+    <div class="total-row">
+
+      <span>
+        Highway Distance
+      </span>
+
+      <strong>
+        {{ trip.Total_km_on_highway }} km
+      </strong>
+
+    </div>
+
+
+    <div class="total-row grand-total">
+
+      <span>
+        Total Amount
+      </span>
+
+      <span>
+        ₹{{ trip.total_amount }}
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div class="payment-section">
+
+
+  <div class="payment-card">
+
+    <h3>
+
+      <i class="fa-solid fa-qrcode gold"></i>
+
+      Payment Details
+
+    </h3>
+
+
+    <div class="qr-container">
+
+      <img src="{% static 'img/qr.png' %}" alt="Payment QR Code">
+
+      <div class="upi">
+        UPI-ID: 1234567890@upi
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="payment-card">
+
+    <h3>
+
+      <i class="fa-solid fa-circle-info gold"></i>
+
+      Payment Note
+
+    </h3>
+
+
+    <p>
+
+      Dear Consumer,
+
+      <br><br>
+
+      Please make the payment within 48 hours
+      to avoid extra charges.
+
+      <br><br>
+
+      If you have any questions regarding
+      your toll payment, please contact
+      our customer support.
+
+      <br><br>
+
+      Thank you for using GPS Toller.
+
+    </p>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+                              FOOTER
+        ================================================== -->
+
+<footer class="invoice-footer">
+
+  <div>
+
+    <p>
+      Thank you for using GPS Toller.
+    </p>
+
+    <p class="footer-note">
+      This is a computer-generated receipt and
+      does not require a physical signature.
+    </p>
+
+  </div>
+
+
+            <button class="print-button" onclick="window.print()">
+
+                <i class="fa-solid fa-print"></i>
+
+                Print Receipt
+
+            </button>
+
+        </footer>
+
+    </div>
+
+</div>
 
 </body>
 

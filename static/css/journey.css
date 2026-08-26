@@ -1,0 +1,1717 @@
+/* =========================================================
+   GPS TOLLER
+   JOURNEY PAGE
+   Page-specific styling only.
+   Sidebar / Topbar are controlled by base.html.
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.journey-page {
+
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 4px 0 20px;
+
+}
+
+
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */
+
+.journey-intro {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.journey-intro-icon {
+
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        rgba(212, 175, 55, 0.10);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.25);
+
+    color: #d4af37;
+
+    font-size: 19px;
+
+}
+
+
+.journey-intro h2 {
+
+    margin: 0 0 4px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}
+
+
+.journey-intro p {
+
+    margin: 0;
+
+    color: #858585;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* =========================================================
+   MAIN FORM CARD
+========================================================= */
+
+.journey-form-card {
+
+    width: 100%;
+
+    background: #111111;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.18);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22);
+
+    margin-bottom: 24px;
+
+}
+
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 22px 26px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717,
+            #111111
+        );
+
+}
+
+
+.section-header-icon {
+
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(212, 175, 55, 0.10);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.24);
+
+    color: #d4af37;
+
+    font-size: 16px;
+
+}
+
+
+.section-header h3 {
+
+    margin: 0 0 3px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+}
+
+
+.section-header p {
+
+    margin: 0;
+
+    color: #777777;
+
+    font-size: 12px;
+
+}
+
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.journey-form {
+
+    padding: 26px;
+
+}
+
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.route-section {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        60px
+        minmax(0, 1fr);
+
+    align-items: end;
+
+    gap: 16px;
+
+}
+
+
+.route-field {
+
+    width: 100%;
+
+}
+
+
+.route-field label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+
+    color: #eeeeee;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.field-icon {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    font-size: 10px;
+
+}
+
+
+.start-icon {
+
+    color: #d4af37;
+
+}
+
+
+.destination-icon {
+
+    color: #d4af37;
+
+}
+
+
+
+/* =========================================================
+   DJANGO FORM INPUTS
+========================================================= */
+
+.django-input-wrapper input,
+.django-input-wrapper select,
+.django-input-wrapper textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #181818;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+.django-input-wrapper input::placeholder,
+.django-input-wrapper textarea::placeholder {
+
+    color: #686868;
+
+}
+
+
+.django-input-wrapper input:hover,
+.django-input-wrapper select:hover,
+.django-input-wrapper textarea:hover {
+
+    border-color:
+        rgba(212, 175, 55, 0.45);
+
+}
+
+
+.django-input-wrapper input:focus,
+.django-input-wrapper select:focus,
+.django-input-wrapper textarea:focus {
+
+    background: #1b1b1b;
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(212, 175, 55, 0.08);
+
+}
+
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.django-input-wrapper select {
+
+    cursor: pointer;
+
+}
+
+
+
+/* =========================================================
+   ROUTE CONNECTOR
+========================================================= */
+
+.route-connector {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 48px;
+
+}
+
+
+.connector-line {
+
+    display: none;
+
+}
+
+
+.route-arrow {
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(212, 175, 55, 0.08);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.25);
+
+    color: #d4af37;
+
+    font-size: 13px;
+
+}
+
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.form-divider {
+
+    height: 1px;
+
+    margin: 26px 0;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+}
+
+
+
+/* =========================================================
+   VEHICLE
+========================================================= */
+
+.vehicle-section {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(250px, 0.7fr)
+        minmax(300px, 1.3fr);
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+.vehicle-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.vehicle-icon {
+
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(212, 175, 55, 0.09);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.22);
+
+    color: #d4af37;
+
+    font-size: 15px;
+
+}
+
+
+.vehicle-heading h4 {
+
+    margin: 0 0 3px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.vehicle-heading p {
+
+    margin: 0;
+
+    color: #717171;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+.vehicle-input select,
+.vehicle-input input {
+
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding: 0 14px;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 9px;
+
+    background: #181818;
+
+    color: #ffffff;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.vehicle-input select:focus,
+.vehicle-input input:focus {
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(212, 175, 55, 0.08);
+
+}
+
+
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
+.form-error {
+
+    margin-top: 7px;
+
+    color: #ff7272;
+
+    font-size: 11px;
+
+}
+
+
+.form-error p {
+
+    margin: 0 0 3px;
+
+}
+
+
+.general-error {
+
+    text-align: center;
+
+    padding: 10px;
+
+    margin-top: 18px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 70, 70, 0.06);
+
+    border:
+        1px solid rgba(255, 70, 70, 0.15);
+
+}
+
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.journey-submit {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 26px;
+
+}
+
+
+.journey-submit-btn {
+
+    height: 46px;
+
+    min-width: 175px;
+
+    padding: 0 17px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #d4af37;
+
+    color: #111111;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.journey-submit-btn:hover {
+
+    background: #e2c04c;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(212, 175, 55, 0.18);
+
+}
+
+
+.journey-submit-btn:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+.submit-arrow {
+
+    margin-left: 4px;
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================================================
+   TRACKING SECTION
+========================================================= */
+
+.tracking-section {
+
+    width: 100%;
+
+}
+
+
+.tracking-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+
+}
+
+
+.tracking-header h3 {
+
+    margin: 0 0 3px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+}
+
+
+.tracking-header p {
+
+    margin: 0;
+
+    color: #777777;
+
+    font-size: 12px;
+
+}
+
+
+
+/* =========================================================
+   GPS STATUS
+========================================================= */
+
+.gps-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(212, 175, 55, 0.07);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.17);
+
+    color: #d4af37;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+
+.gps-status-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #d4af37;
+
+    box-shadow:
+        0 0 8px
+        rgba(212, 175, 55, 0.6);
+
+}
+
+
+
+/* =========================================================
+   TRACKING GRID
+========================================================= */
+
+.tracking-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.75fr)
+        minmax(280px, 0.75fr);
+
+    gap: 18px;
+
+}
+
+
+
+/* =========================================================
+   MAP CARD
+========================================================= */
+
+.map-card,
+.location-card {
+
+    min-width: 0;
+
+    background: #111111;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.17);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.20);
+
+}
+
+
+.map-card-header {
+
+    padding: 16px 18px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+
+.map-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.map-title-icon {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(212, 175, 55, 0.08);
+
+    color: #d4af37;
+
+    font-size: 14px;
+
+}
+
+
+.map-title h4 {
+
+    margin: 0 0 2px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.map-title span {
+
+    color: #6f6f6f;
+
+    font-size: 10px;
+
+}
+
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map-wrapper {
+
+    position: relative;
+
+    height: 390px;
+
+    overflow: hidden;
+
+}
+
+
+#map {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+
+/* =========================================================
+   MAP LOADING
+========================================================= */
+
+.map-loading {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+        rgba(17, 17, 17, 0.88);
+
+    color: #888888;
+
+    font-size: 11px;
+
+    pointer-events: none;
+
+}
+
+
+.map-loading-icon {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(212, 175, 55, 0.08);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.20);
+
+    color: #d4af37;
+
+}
+
+
+
+/* =========================================================
+   LOCATION CARD
+========================================================= */
+
+.location-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.location-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 17px 18px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+
+.location-title-icon {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(212, 175, 55, 0.08);
+
+    color: #d4af37;
+
+    font-size: 14px;
+
+}
+
+
+.location-card-header h4 {
+
+    margin: 0 0 2px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.location-card-header span {
+
+    color: #6f6f6f;
+
+    font-size: 10px;
+
+}
+
+
+
+/* =========================================================
+   COORDINATES
+========================================================= */
+
+.coordinates {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 18px;
+
+}
+
+
+.coordinate-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background: #181818;
+
+    border:
+        1px solid #282828;
+
+    transition:
+        border-color 0.2s ease;
+
+}
+
+
+.coordinate-box:hover {
+
+    border-color:
+        rgba(212, 175, 55, 0.35);
+
+}
+
+
+.coordinate-icon {
+
+    width: 33px;
+    height: 33px;
+
+    min-width: 33px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(212, 175, 55, 0.08);
+
+    color: #d4af37;
+
+    font-size: 12px;
+
+}
+
+
+.coordinate-content {
+
+    min-width: 0;
+
+}
+
+
+.coordinate-label {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #707070;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.coordinate-value {
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+}
+
+
+
+/* =========================================================
+   LOCATION STATUS
+========================================================= */
+
+.location-status {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin:
+        0 18px 16px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(212, 175, 55, 0.055);
+
+    border:
+        1px solid rgba(212, 175, 55, 0.12);
+
+}
+
+
+.status-icon {
+
+    width: 28px;
+    height: 28px;
+
+    min-width: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    color: #d4af37;
+
+    background:
+        rgba(212, 175, 55, 0.09);
+
+    font-size: 11px;
+
+}
+
+
+.location-status strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #dddddd;
+
+    font-size: 11px;
+
+}
+
+
+.location-status p {
+
+    margin: 0;
+
+    color: #707070;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* =========================================================
+   MAP INFO
+========================================================= */
+
+.map-info {
+
+    margin-top: auto;
+
+    padding:
+        0 18px 18px;
+
+}
+
+
+.map-info-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 0;
+
+    color: #666666;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+}
+
+
+.map-info-item + .map-info-item {
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.05);
+
+}
+
+
+.map-info-item i {
+
+    width: 15px;
+
+    color: #d4af37;
+
+    text-align: center;
+
+}
+
+
+
+/* =========================================================
+   LEAFLET
+========================================================= */
+
+.leaflet-control-layers {
+
+    background:
+        rgba(17, 17, 17, 0.96) !important;
+
+    color: #ffffff !important;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.28) !important;
+
+    border-radius: 8px !important;
+
+}
+
+
+.leaflet-control-layers-list {
+
+    color: #dddddd;
+
+}
+
+
+.leaflet-control-layers-toggle {
+
+    background-color: #111111 !important;
+
+}
+
+
+.leaflet-control-zoom a {
+
+    background:
+        #111111 !important;
+
+    color:
+        #d4af37 !important;
+
+    border-color:
+        #303030 !important;
+
+}
+
+
+.leaflet-control-zoom a:hover {
+
+    background:
+        #181818 !important;
+
+}
+
+
+
+/* =========================================================
+   GEOSEARCH
+========================================================= */
+
+.leaflet-control-geosearch {
+
+    margin-top: 10px !important;
+
+}
+
+
+.leaflet-control-geosearch form {
+
+    background:
+        #111111 !important;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.25) !important;
+
+    border-radius: 8px !important;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.25);
+
+}
+
+
+.leaflet-control-geosearch input {
+
+    background:
+        #181818 !important;
+
+    color:
+        #ffffff !important;
+
+    border: none !important;
+
+}
+
+
+.leaflet-control-geosearch input::placeholder {
+
+    color: #777777 !important;
+
+}
+
+
+.leaflet-control-geosearch button {
+
+    background:
+        #d4af37 !important;
+
+    color:
+        #111111 !important;
+
+}
+
+
+
+/* =========================================================
+   LEAFLET POPUP
+========================================================= */
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+
+    background: #111111;
+
+    color: #ffffff;
+
+}
+
+
+.leaflet-popup-content {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+.leaflet-popup-content strong {
+
+    color: #d4af37;
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .tracking-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .location-card {
+
+        min-height: auto;
+
+    }
+
+
+    .coordinates {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .map-info {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 10px;
+
+    }
+
+
+    .map-info-item + .map-info-item {
+
+        border-top: none;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .route-section {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 10px;
+
+    }
+
+
+    .route-connector {
+
+        height: 30px;
+
+    }
+
+
+    .route-arrow {
+
+        transform:
+            rotate(90deg);
+
+    }
+
+
+    .vehicle-section {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 16px;
+
+    }
+
+
+    .journey-submit {
+
+        justify-content:
+            stretch;
+
+    }
+
+
+    .journey-submit-btn {
+
+        width: 100%;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .journey-page {
+
+        padding:
+            0 0 15px;
+
+    }
+
+
+    .journey-intro {
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .journey-intro-icon {
+
+        width: 42px;
+        height: 42px;
+
+        min-width: 42px;
+
+    }
+
+
+    .journey-intro h2 {
+
+        font-size: 19px;
+
+    }
+
+
+    .journey-intro p {
+
+        font-size: 11px;
+
+    }
+
+
+    .section-header {
+
+        padding:
+            18px;
+
+    }
+
+
+    .journey-form {
+
+        padding:
+            18px;
+
+    }
+
+
+    .tracking-header {
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+    }
+
+
+    .gps-status {
+
+        padding:
+            6px 8px;
+
+    }
+
+
+    .map-wrapper {
+
+        height: 330px;
+
+    }
+
+
+    .coordinates {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .map-info {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .map-info-item + .map-info-item {
+
+        border-top:
+            1px solid rgba(255, 255, 255, 0.05);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .journey-intro {
+
+        align-items: flex-start;
+
+    }
+
+
+    .journey-intro h2 {
+
+        font-size: 17px;
+
+    }
+
+
+    .journey-intro p {
+
+        font-size: 10px;
+
+    }
+
+
+    .tracking-header {
+
+        flex-direction: column;
+
+    }
+
+
+    .map-wrapper {
+
+        height: 300px;
+
+    }
+
+}

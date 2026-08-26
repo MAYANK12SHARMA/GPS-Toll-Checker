@@ -1,0 +1,980 @@
+/* ============================================================
+   GPS TOLLER - ENQUIRY PAGE
+   ============================================================ */
+
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body.enquiry-page {
+    font-family: "Open Sans", sans-serif;
+    background: #f5f6fa;
+    color: #344767;
+}
+
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.enquiry-sidebar {
+    position: fixed;
+
+    top: 15px;
+    left: 15px;
+    bottom: 15px;
+
+    width: 250px;
+
+    margin: 0 !important;
+
+    padding: 0;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+
+    overflow: hidden;
+
+    z-index: 1000;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+
+/* ============================================================
+   SIDEBAR HEADER
+   ============================================================ */
+
+.sidebar-header {
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 22px;
+}
+
+
+.sidebar-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    color: #344767;
+}
+
+
+.sidebar-brand:hover {
+    color: #344767;
+}
+
+
+.sidebar-logo {
+    width: 42px;
+    height: 42px;
+
+    object-fit: contain;
+}
+
+
+.sidebar-brand-text {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+
+
+/* ============================================================
+   SIDEBAR DIVIDER
+   ============================================================ */
+
+.sidebar-divider {
+    margin: 0 20px 18px;
+
+    border: 0;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+   ============================================================ */
+
+.sidebar-navigation {
+    height: calc(100% - 108px);
+
+    padding: 0 14px;
+
+    overflow-y: auto;
+}
+
+
+.sidebar-navigation::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+    background: #dddddd;
+
+    border-radius: 10px;
+}
+
+
+.enquiry-nav-link {
+    display: flex !important;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 10px 14px !important;
+
+    margin-bottom: 5px;
+
+    border-radius: 12px;
+
+    color: #67748e !important;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.enquiry-nav-link:hover {
+    background: #f5f6fa;
+
+    color: #344767 !important;
+
+    transform: translateX(2px);
+}
+
+
+
+/* ============================================================
+   NAV ICON
+   ============================================================ */
+
+.nav-icon {
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 10px;
+
+    border-radius: 9px;
+
+    background: #f5f6fa;
+
+    color: #67748e;
+
+    font-size: 13px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.enquiry-nav-link.active {
+    background: linear-gradient(
+        135deg,
+        #5e72e4,
+        #825ee4
+    ) !important;
+
+    color: #ffffff !important;
+
+    box-shadow:
+        0 8px 20px rgba(94, 114, 228, 0.25);
+}
+
+
+.enquiry-nav-link.active .nav-icon {
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+}
+
+
+.enquiry-nav-link.active:hover {
+    transform: translateX(0);
+
+    color: #ffffff !important;
+}
+
+
+
+/* ============================================================
+   SIDEBAR SECTION
+   ============================================================ */
+
+.sidebar-section {
+    margin: 25px 8px 10px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+.sidebar-section span {
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #a0aec0;
+}
+
+
+
+/* ============================================================
+   LOGOUT
+   ============================================================ */
+
+.logout-link:hover {
+    color: #e74c3c !important;
+}
+
+
+.logout-link:hover .nav-icon {
+    color: #e74c3c;
+}
+
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.enquiry-main {
+    min-height: 100vh;
+
+    margin-left: 280px;
+
+    padding: 0;
+
+    background: #f5f6fa;
+
+    transition: margin-left 0.3s ease;
+}
+
+
+
+/* ============================================================
+   TOP NAVBAR
+   ============================================================ */
+
+.enquiry-navbar {
+    min-height: 88px;
+
+    padding: 15px 30px !important;
+
+    background: transparent;
+
+    border: 0;
+}
+
+
+.enquiry-navbar .container-fluid {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+
+
+/* ============================================================
+   PAGE HEADING
+   ============================================================ */
+
+.page-heading {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.breadcrumb-text {
+    color: #98a2b3;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.page-heading h5 {
+    margin: 0;
+
+    color: #344767;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+
+
+/* ============================================================
+   USER
+   ============================================================ */
+
+.navbar-user {
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 15px;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    color: #344767;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.05);
+}
+
+
+.navbar-user i {
+    font-size: 14px;
+
+    color: #5e72e4;
+}
+
+
+
+/* ============================================================
+   MOBILE SIDEBAR BUTTON
+   ============================================================ */
+
+.sidebar-toggle {
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    margin-right: 15px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #344767;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+
+/* ============================================================
+   PAGE CONTAINER
+   ============================================================ */
+
+.enquiry-container {
+    padding: 10px 30px 50px;
+}
+
+
+.enquiry-wrapper {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 25px auto 0;
+}
+
+
+
+/* ============================================================
+   CONTACT CARD
+   ============================================================ */
+
+.enquiry-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 0 !important;
+
+    border-radius: 20px !important;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.07);
+}
+
+
+
+/* ============================================================
+   CARD HEADER
+   ============================================================ */
+
+.enquiry-card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 30px 35px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    background: #ffffff;
+}
+
+
+.enquiry-icon {
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #5e72e4,
+        #825ee4
+    );
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    box-shadow:
+        0 8px 20px rgba(94, 114, 228, 0.25);
+}
+
+
+.enquiry-card-header h4 {
+    margin: 0 0 5px;
+
+    color: #344767;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+.enquiry-card-header p {
+    margin: 0;
+
+    color: #8392ab;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+
+/* ============================================================
+   CARD BODY
+   ============================================================ */
+
+.enquiry-card-body {
+    padding: 35px;
+}
+
+
+
+/* ============================================================
+   FORM ROW
+   ============================================================ */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+
+/* ============================================================
+   FORM GROUP
+   ============================================================ */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #344767;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+
+/* ============================================================
+   INPUT WRAPPER
+   ============================================================ */
+
+.input-wrapper {
+    position: relative;
+}
+
+
+.input-wrapper > i {
+    position: absolute;
+
+    top: 50%;
+    left: 15px;
+
+    transform: translateY(-50%);
+
+    color: #a0aec0;
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+
+.input-wrapper input,
+.input-wrapper textarea {
+    width: 100%;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 11px;
+
+    background: #f8f9fa;
+
+    color: #344767;
+
+    font-family: "Open Sans", sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.input-wrapper input {
+    height: 48px;
+
+    padding: 0 15px 0 43px;
+}
+
+
+.input-wrapper textarea {
+    min-height: 150px;
+
+    padding: 14px 15px 14px 43px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+    color: #a0aec0;
+}
+
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+    border-color: #5e72e4;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(94, 114, 228, 0.10);
+}
+
+
+.input-wrapper:focus-within > i {
+    color: #5e72e4;
+}
+
+
+
+/* ============================================================
+   TEXTAREA ICON
+   ============================================================ */
+
+.textarea-wrapper > i {
+    top: 18px;
+
+    transform: none;
+}
+
+
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+
+.submit-container {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 5px;
+}
+
+
+.submit-btn {
+    min-width: 180px;
+
+    height: 48px;
+
+    padding: 0 25px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #5e72e4,
+        #825ee4
+    );
+
+    color: #ffffff;
+
+    font-family: "Open Sans", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(94, 114, 228, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(94, 114, 228, 0.30);
+}
+
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+
+.submit-btn:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (max-width: 1199px) {
+
+    .enquiry-sidebar {
+        width: 230px;
+    }
+
+    .enquiry-main {
+        margin-left: 255px;
+    }
+
+    .enquiry-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (max-width: 991px) {
+
+    .enquiry-sidebar {
+        transform: translateX(-110%);
+
+        left: 10px;
+
+        top: 10px;
+
+        bottom: 10px;
+    }
+
+
+    .enquiry-sidebar.sidebar-open {
+        transform: translateX(0);
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.18);
+    }
+
+
+    .enquiry-main {
+        margin-left: 0;
+
+        width: 100%;
+    }
+
+
+    .sidebar-toggle {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    .enquiry-navbar {
+        padding: 15px 20px !important;
+    }
+
+}
+
+
+
+/* ============================================================
+   RESPONSIVE - SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+    .enquiry-navbar {
+        min-height: 75px;
+    }
+
+
+    .breadcrumb-text {
+        font-size: 10px;
+    }
+
+
+    .page-heading h5 {
+        font-size: 16px;
+    }
+
+
+    .navbar-user {
+        padding: 8px 10px;
+    }
+
+
+    .navbar-user span {
+        display: none;
+    }
+
+
+    .enquiry-container {
+        padding: 5px 15px 30px;
+    }
+
+
+    .enquiry-wrapper {
+        margin-top: 15px;
+    }
+
+
+    .enquiry-card-header {
+        padding: 22px 20px;
+    }
+
+
+    .enquiry-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 17px;
+    }
+
+
+    .enquiry-card-header h4 {
+        font-size: 17px;
+    }
+
+
+    .enquiry-card-header p {
+        font-size: 11px;
+    }
+
+
+    .enquiry-card-body {
+        padding: 25px 20px;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+
+    .submit-container {
+        justify-content: stretch;
+    }
+
+
+    .submit-btn {
+        width: 100%;
+    }
+
+}
+
+
+
+/* ============================================================
+   VERY SMALL SCREENS
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+    .enquiry-navbar {
+        padding-left: 12px !important;
+
+        padding-right: 12px !important;
+    }
+
+
+    .sidebar-toggle {
+        width: 38px;
+
+        height: 38px;
+
+        margin-right: 10px;
+    }
+
+
+    .page-heading h5 {
+        font-size: 14px;
+    }
+
+
+    .enquiry-card-header {
+        align-items: flex-start;
+    }
+
+
+    .enquiry-card-body {
+        padding: 20px 15px;
+    }
+
+}

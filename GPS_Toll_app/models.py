@@ -65,6 +65,7 @@ class Trip(models.Model):
     total_km = models.DecimalField(max_digits=8, decimal_places=2)
     destination_reached_time = models.DateTimeField(default=timezone.now)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True,)
+    paid_status = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Trip from {self.starting_point} to {self.ending_point} field name {self.uuid_field}'

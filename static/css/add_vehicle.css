@@ -1,0 +1,458 @@
+/* =========================================================
+   GPS TOLLER
+   ADD VEHICLE
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.vehicle-page {
+
+    width: min(
+        1050px,
+        100%
+    );
+
+    margin: 0 auto;
+
+    padding-bottom: 40px;
+
+}
+
+
+.page-header {
+
+    margin-bottom: 25px;
+
+}
+
+
+.page-header h2 {
+
+    margin: 7px 0;
+
+    color: var(--white);
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+}
+
+
+.page-header p {
+
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.vehicle-card {
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #151515,
+            #0f0f0f
+        );
+
+    border: 1px solid var(--gold-border);
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.vehicle-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 24px 28px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.vehicle-header-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gold);
+
+    background:
+        rgba(212,175,55,.08);
+
+    border:
+        1px solid var(--gold-border);
+
+    border-radius: 12px;
+
+    font-size: 19px;
+
+}
+
+
+.card-kicker {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.6px;
+
+}
+
+
+.vehicle-card-header h3 {
+
+    margin: 5px 0;
+
+    color: var(--white);
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+}
+
+
+.vehicle-card-header p {
+
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.vehicle-card-body {
+
+    padding: 28px;
+
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.vehicle-form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+}
+
+
+.vehicle-form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.vehicle-full-width {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.vehicle-form-group label {
+
+    display: flex;
+
+    align-items: center;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.vehicle-form-group label i {
+
+    width: 18px;
+
+    color: var(--gold);
+
+    margin-right: 4px;
+
+}
+
+
+/* =========================================================
+   DJANGO FORM INPUTS
+========================================================= */
+
+.vehicle-form-group input,
+.vehicle-form-group select,
+.vehicle-form-group textarea {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 0 13px;
+
+    color: var(--white);
+
+    background: #0a0a0a;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    transition: var(--transition);
+
+}
+
+
+.vehicle-form-group textarea {
+
+    padding-top: 12px;
+
+    padding-bottom: 12px;
+
+    resize: vertical;
+
+}
+
+
+.vehicle-form-group input::placeholder,
+.vehicle-form-group textarea::placeholder {
+
+    color: #555;
+
+}
+
+
+.vehicle-form-group input:focus,
+.vehicle-form-group select:focus,
+.vehicle-form-group textarea:focus {
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(212,175,55,.05);
+
+}
+
+
+.vehicle-form-group select option {
+
+    color: white;
+
+    background: #111;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.vehicle-error {
+
+    color: #ff7070;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+}
+
+
+.vehicle-error ul {
+
+    margin: 0;
+
+    padding-left: 15px;
+
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.vehicle-form-actions {
+
+    margin-top: 28px;
+
+    padding-top: 24px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+
+.vehicle-form-actions .gold-button {
+
+    min-height: 44px;
+
+}
+
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.vehicle-security-note {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 17px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+}
+
+
+.vehicle-security-note i {
+
+    color: var(--gold);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .vehicle-form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .vehicle-full-width {
+
+        grid-column: auto;
+
+    }
+
+
+    .vehicle-card-header {
+
+        padding: 20px;
+
+    }
+
+
+    .vehicle-card-body {
+
+        padding: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .vehicle-page {
+
+        width: 100%;
+
+    }
+
+
+    .page-header h2 {
+
+        font-size: 24px;
+
+    }
+
+
+    .vehicle-card-header {
+
+        align-items: flex-start;
+
+    }
+
+
+    .vehicle-form-actions .gold-button {
+
+        width: 100%;
+
+    }
+
+}

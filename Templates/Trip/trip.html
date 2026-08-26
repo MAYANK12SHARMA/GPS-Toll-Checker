@@ -1,75 +1,756 @@
+{% extends "base.html" %}
 {% load static %}
-<!-- trip_form.html -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Trip</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Create a Trip</h2>
-        <form method="post" class="needs-validation" novalidate>
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_starting_point">Starting Point</label>
-                {{ form.starting_point }}
-                <div class="invalid-feedback">
-                    Please provide a valid starting point.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="id_ending_point">Ending Point</label>
-                {{ form.ending_point }}
-                <div class="invalid-feedback">
-                    Please provide a valid ending point.
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="id_vehicle_number">Vehicle Number</label>
-                {{ form.vehicle_number }}
-                <div class="invalid-feedback">
-                    Please select a valid vehicle number.
-                </div>
-            </div>
-            <!-- Optional fields -->
-            <div class="form-group">
-                <label for="id_total_km">Total Kilometers</label>
-                {{ form.total_km }}
-            </div>
-            <div class="form-group">
-                <label for="id_total_amount">Total Amount</label>
-                {{ form.total_amount }}
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+{% block title %}
+Create Trip - GPS Toller
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* =========================================================
+       TRIP PAGE
+    ========================================================= */
+
+    .trip-page {
+        padding: 34px;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    .trip-header {
+        margin-bottom: 30px;
+    }
+
+    .trip-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #c9a227;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    .trip-eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 2px;
+        background: #c9a227;
+        display: inline-block;
+    }
+
+    .trip-header h1 {
+        margin: 0;
+        color: #171717;
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+    }
+
+    .trip-header p {
+        margin: 8px 0 0;
+        color: #777;
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+       MAIN CARD
+    ========================================================= */
+
+    .trip-card {
+        background: #fff;
+        border: 1px solid #e9e9e9;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+    }
+
+
+    /* CARD HEADER */
+
+    .trip-card-header {
+        padding: 25px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #ededed;
+        background: linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #fafafa 100%
+        );
+    }
+
+    .trip-card-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .trip-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #181818;
+        color: #d4af37;
+
+        font-size: 18px;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .trip-card-title h2 {
+        margin: 0;
+        color: #171717;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .trip-card-title span {
+        display: block;
+        margin-top: 4px;
+        color: #888;
+        font-size: 12px;
+    }
+
+    .trip-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+
+        padding: 8px 13px;
+
+        border: 1px solid #e5e5e5;
+        border-radius: 30px;
+
+        background: #fafafa;
+        color: #777;
+
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .trip-status i {
+        color: #c9a227;
+    }
+
+
+    /* =========================================================
+       FORM
+    ========================================================= */
+
+    .trip-form-body {
+        padding: 32px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .field.full {
+        grid-column: 1 / -1;
+    }
+
+    .field label {
+        display: flex;
+        align-items: center;
+
+        margin-bottom: 9px;
+
+        color: #2a2a2a;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .field label i {
+        width: 20px;
+        margin-right: 5px;
+
+        color: #c9a227;
+        font-size: 13px;
+    }
+
+
+    /* Django generated inputs */
+
+    .field input,
+    .field select,
+    .field textarea {
+        width: 100%;
+        min-height: 49px;
+
+        padding: 12px 14px;
+
+        box-sizing: border-box;
+
+        border: 1px solid #dddddd;
+        border-radius: 11px;
+
+        background: #fafafa;
+        color: #222;
+
+        font-family: inherit;
+        font-size: 13px;
+
+        outline: none;
+
+        transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .field input:hover,
+    .field select:hover,
+    .field textarea:hover {
+        border-color: #cfcfcf;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+        border-color: #c9a227;
+        background: #fff;
+
+        box-shadow:
+            0 0 0 3px rgba(201, 162, 39, 0.10);
+    }
+
+    .field textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+
+    /* Placeholder */
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+        color: #aaa;
+    }
+
+
+    /* HELP TEXT */
+
+    .field-help {
+        margin-top: 7px;
+
+        color: #999;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+
+    /* ERRORS */
+
+    .errorlist {
+        margin: 7px 0 0;
+        padding: 0;
+
+        list-style: none;
+
+        color: #dc3545;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+
+    /* DIVIDER */
+
+    .form-divider {
+        height: 1px;
+
+        margin: 32px 0;
+
+        border: 0;
+
+        background: #eeeeee;
+    }
+
+
+    /* =========================================================
+       SUBMIT
+    ========================================================= */
+
+    .trip-submit-area {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+    .trip-security {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        color: #888;
+        font-size: 11px;
+    }
+
+    .trip-security i {
+        color: #c9a227;
+    }
+
+    .trip-submit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        min-width: 155px;
+
+        padding: 13px 22px;
+
+        border: none;
+        border-radius: 10px;
+
+        background: #181818;
+        color: #fff;
+
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 800;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .trip-submit i {
+        color: #d4af37;
+    }
+
+    .trip-submit:hover {
+        background: #000;
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.18);
+    }
+
+
+    /* =========================================================
+       BOTTOM JOURNEY STRIP
+    ========================================================= */
+
+    .trip-bottom-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        margin-top: 22px;
+
+        border: 1px solid #e9e9e9;
+        border-radius: 16px;
+
+        background: #fff;
+
+        overflow: hidden;
+    }
+
+    .trip-feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        padding: 18px 20px;
+    }
+
+    .trip-feature + .trip-feature {
+        border-left: 1px solid #eeeeee;
+    }
+
+    .trip-feature-icon {
+        width: 36px;
+        height: 36px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+
+        background: #f7f3e5;
+        color: #b08b19;
+
+        font-size: 13px;
+    }
+
+    .trip-feature strong {
+        display: block;
+
+        color: #222;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .trip-feature span {
+        display: block;
+
+        margin-top: 3px;
+
+        color: #999;
+        font-size: 10px;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+        .trip-page {
+            padding: 24px;
+        }
+
+        .trip-bottom-strip {
+            grid-template-columns: 1fr;
+        }
+
+        .trip-feature + .trip-feature {
+            border-left: 0;
+            border-top: 1px solid #eeeeee;
+        }
+    }
+
+
+    @media (max-width: 700px) {
+
+        .trip-page {
+            padding: 18px;
+        }
+
+        .trip-header h1 {
+            font-size: 28px;
+        }
+
+        .trip-card-header {
+            padding: 20px;
+        }
+
+        .trip-form-body {
+            padding: 20px;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .field.full {
+            grid-column: auto;
+        }
+
+        .trip-status {
+            display: none;
+        }
+
+        .trip-submit-area {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .trip-submit {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="trip-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="trip-header">
+
+        <div class="trip-eyebrow">
+            GPS • TOLL • JOURNEY
+        </div>
+
+        <h1>Create Trip</h1>
+
+        <p>
+            Enter your journey details to start tracking your trip.
+        </p>
+
     </div>
 
-    <!-- Include Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Form validation script -->
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                var form = document.getElementsByClassName('needs-validation')[0];
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            }, false);
-        })();
-    </script>
-</body>
-</html>
+    <!-- =====================================================
+         MAIN FORM CARD
+    ====================================================== -->
+
+    <div class="trip-card">
+
+        <!-- CARD HEADER -->
+
+        <div class="trip-card-header">
+
+            <div class="trip-card-title">
+
+                <div class="trip-card-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div>
+                    <h2>Trip Information</h2>
+                    <span>
+                        Enter the details for your journey
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="trip-status">
+                <i class="fa-regular fa-circle"></i>
+                New Trip
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM BODY
+        ================================================== -->
+
+        <div class="trip-form-body">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="form-grid">
+
+
+                    <!-- STARTING POINT -->
+
+                    <div class="field">
+
+                        <label for="id_starting_point">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            Starting Point
+
+                        </label>
+
+                        {{ form.starting_point }}
+
+                        {% if form.starting_point.errors %}
+                            {{ form.starting_point.errors }}
+                        {% endif %}
+
+                        <span class="field-help">
+                            Where will your journey begin?
+                        </span>
+
+                    </div>
+
+
+                    <!-- ENDING POINT -->
+
+                    <div class="field">
+
+                        <label for="id_ending_point">
+
+                            <i class="fa-solid fa-flag-checkered"></i>
+
+                            Ending Point
+
+                        </label>
+
+                        {{ form.ending_point }}
+
+                        {% if form.ending_point.errors %}
+                            {{ form.ending_point.errors }}
+                        {% endif %}
+
+                        <span class="field-help">
+                            Where will your journey end?
+                        </span>
+
+                    </div>
+
+
+                    <!-- VEHICLE -->
+
+                    <div class="field full">
+
+                        <label for="id_vehicle_number">
+
+                            <i class="fa-solid fa-car"></i>
+
+                            Vehicle Number
+
+                        </label>
+
+                        {{ form.vehicle_number }}
+
+                        {% if form.vehicle_number.errors %}
+                            {{ form.vehicle_number.errors }}
+                        {% endif %}
+
+                        <span class="field-help">
+                            Select the vehicle you want to use for this trip.
+                        </span>
+
+                    </div>
+
+
+                    <!-- TOTAL KM -->
+
+                    <div class="field">
+
+                        <label for="id_total_km">
+
+                            <i class="fa-solid fa-road"></i>
+
+                            Total Kilometers
+
+                        </label>
+
+                        {{ form.total_km }}
+
+                        {% if form.total_km.errors %}
+                            {{ form.total_km.errors }}
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- TOTAL AMOUNT -->
+
+                    <div class="field">
+
+                        <label for="id_total_amount">
+
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                            Total Amount
+
+                        </label>
+
+                        {{ form.total_amount }}
+
+                        {% if form.total_amount.errors %}
+                            {{ form.total_amount.errors }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <hr class="form-divider">
+
+
+                <!-- SUBMIT AREA -->
+
+                <div class="trip-submit-area">
+
+                    <div class="trip-security">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        Your trip information is securely stored.
+
+                    </div>
+
+
+                    <button type="submit" class="trip-submit">
+
+                        Create Trip
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FEATURES
+    ====================================================== -->
+
+    <div class="trip-bottom-strip">
+
+        <div class="trip-feature">
+
+            <div class="trip-feature-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+
+            <div>
+                <strong>GPS TRACKING</strong>
+                <span>Track your journey in real time</span>
+            </div>
+
+        </div>
+
+
+        <div class="trip-feature">
+
+            <div class="trip-feature-icon">
+                <i class="fa-solid fa-route"></i>
+            </div>
+
+            <div>
+                <strong>SMART ROUTING</strong>
+                <span>Manage your journey efficiently</span>
+            </div>
+
+        </div>
+
+
+        <div class="trip-feature">
+
+            <div class="trip-feature-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div>
+                <strong>SECURE DATA</strong>
+                <span>Your trip information stays protected</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

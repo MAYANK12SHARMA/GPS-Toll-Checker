@@ -1,150 +1,681 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}
+Create Account - GPS Toller
+{% endblock %}
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static '/img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static '/img/favicon.png' %}">
-  <title>
-    GPS-Toller Register
 
-  </title>
-  <!-- Fonts and icons -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="{% static '/css/nucleo-icons.css' %}" rel="stylesheet" />
-  <link href="{% static '/css/nucleo-svg.css' %}" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="{% static '/css/nucleo-svg.css' %}" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="{% static '/css/soft-ui-dashboard.css' %}" rel="stylesheet" />
-</head>
+{% block extra_css %}
 
-<body class="g-sidenav-show bg-gray-100">
-  <!-- Navbar -->
-  <!-- End Navbar -->
-  <section class="min-vh-100 mb-8">
-    <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"style="background-image: url('{% static '/img/curved-images/curved5.jpeg' %}');">
-      <span class="mask bg-gradient-dark opacity-5"></span>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-5 text-center mx-auto">
-            <h1 class="text-white mb-1 mt-2">Welcome!</h1>
-            <!-- <p class="text-lead text-white">Welcome to the GPS Toll Tax</p> -->
-            <p class="text-lead text-white">Please Sign-up to GPS Toll Tax </p>
+<style>
+  .register-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px 20px;
+
+    background:
+
+      radial-gradient(circle at 15% 20%,
+        rgba(212, 175, 55, .08),
+        transparent 30%),
+
+      radial-gradient(circle at 90% 80%,
+        rgba(212, 175, 55, .06),
+        transparent 30%),
+
+      #080808;
+
+  }
+
+
+  .register-container {
+
+    width: min(1000px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+      1fr 430px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--gold-border);
+
+    border-radius: 20px;
+
+    background: #111111;
+
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, .5);
+
+  }
+
+
+  .register-visual {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 55px;
+
+    background:
+
+      radial-gradient(circle at 75% 25%,
+        rgba(212, 175, 55, .12),
+        transparent 30%),
+
+      linear-gradient(145deg,
+        #171717,
+        #0c0c0c);
+
+  }
+
+
+  .register-visual-content {
+
+    max-width: 480px;
+
+  }
+
+
+  .register-visual h1 {
+
+    margin: 15px 0;
+
+    color: #ffffff;
+
+    font-size: clamp(36px,
+        5vw,
+        56px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+  }
+
+
+  .register-visual h1 span {
+
+    color: var(--gold-light);
+
+  }
+
+
+  .register-visual p {
+
+    max-width: 420px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+  }
+
+
+  .register-features {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+  }
+
+
+  .register-feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+  }
+
+
+  .register-feature i {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gold);
+
+    background: rgba(212, 175, 55, .06);
+
+    border: 1px solid var(--gold-border);
+
+    border-radius: 9px;
+
+  }
+
+
+  .register-card {
+
+    padding: 42px 35px;
+
+    background: #111111;
+
+  }
+
+
+  .register-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+  }
+
+
+  .register-icon {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gold);
+
+    background: rgba(212, 175, 55, .07);
+
+    border: 1px solid var(--gold-border);
+
+    border-radius: 11px;
+
+  }
+
+
+  .register-heading h2 {
+
+    margin: 5px 0 0;
+
+    color: #ffffff;
+
+    font-size: 24px;
+
+  }
+
+
+  .register-subtitle {
+
+    margin: 15px 0 25px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+  }
+
+
+  .register-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+  }
+
+
+  .register-form>label {
+
+    margin-bottom: 7px;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+  }
+
+
+  .register-input {
+
+    position: relative;
+
+    margin-bottom: 17px;
+
+  }
+
+
+  .register-input i {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 13px;
+
+    transform: translateY(-50%);
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+  }
+
+
+  .register-input input {
+
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 14px 0 40px;
+
+    color: #ffffff;
+
+    background: #0a0a0a;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 10px;
+
+  }
+
+
+  .register-input input::placeholder {
+
+    color: #555555;
+
+  }
+
+
+  .register-input input:focus {
+
+    border-color: var(--gold);
+
+    box-shadow:
+      0 0 0 3px rgba(212, 175, 55, .05);
+
+  }
+
+
+  .terms-check {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin: 2px 0 20px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+  }
+
+
+  .terms-check input {
+
+    margin-top: 1px;
+
+    accent-color: var(--gold);
+
+  }
+
+
+  .terms-check a {
+
+    color: var(--gold);
+
+  }
+
+
+  .register-button {
+
+    width: 100%;
+
+    margin: 0;
+
+  }
+
+
+  .login-link {
+
+    margin: 22px 0 0;
+
+    color: var(--text-muted);
+
+    text-align: center;
+
+    font-size: 9px;
+
+  }
+
+
+  .login-link a {
+
+    color: var(--gold);
+
+    font-weight: 700;
+
+  }
+
+
+  @media (max-width: 850px) {
+
+    .register-container {
+
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
+
+    }
+
+    .register-visual {
+
+        padding: 35px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .register-page {
+
+        padding: 25px 12px;
+
+    }
+
+    .register-card {
+
+        padding: 30px 22px;
+
+    }
+
+    .register-visual {
+
+        padding: 30px 22px;
+
+    }
+
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="register-page">
+
+  <div class="register-container">
+
+
+    <!-- ==========================================
+             LEFT SIDE
+        =========================================== -->
+
+    <section class="register-visual">
+
+      <div class="register-visual-content">
+
+        <span class="eyebrow">
+          GPS • TOLL • TRACK
+        </span>
+
+
+        <h1>
+
+          Start your
+
+          <br>
+
+          <span>journey today.</span>
+
+        </h1>
+
+
+        <p>
+
+          Create your GPS Toller account and
+          manage your vehicle, journeys and
+          toll payments from one place.
+
+        </p>
+
+
+        <div class="register-features">
+
+
+          <div class="register-feature">
+
+            <i class="fa-solid fa-car"></i>
+
+            <span>
+              Manage your vehicles
+            </span>
+
           </div>
-        </div>
-      </div>
+<div class="register-feature">
+
+  <i class="fa-solid fa-location-dot"></i>
+
+  <span>
+    Track vehicle locations
+  </span>
+
+                    </div>
+<div class="register-feature">
+
+  <i class="fa-solid fa-wallet"></i>
+
+  <span>
+    Manage toll payments
+  </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+</section>
+
+
+<!-- ==========================================
+             REGISTER FORM
+        =========================================== -->
+
+<section class="register-card">
+
+
+  <div class="register-heading">
+
+    <span class="register-icon">
+
+      <i class="fa-solid fa-user-plus"></i>
+
+    </span>
+
+
+    <div>
+
+      <span class="eyebrow">
+        CREATE ACCOUNT
+      </span>
+
+      <h2>
+        Sign up
+      </h2>
+
     </div>
-    <div class="container">
-      <div class="row mt-lg-n10 mt-md-n11 mt-n10">
-        <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
-          <div class="card z-index-0">
-            <div class="card-header text-center pt-4">
-              <h5>Register with</h5>
+
             </div>
-            <div class="row px-xl-5 px-sm-4 px-3">
-              <div class="col-3 ms-auto px-1">
-                <a class="btn btn-outline-light w-100" href="javascript:;">
-                  <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink32">
-                    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="facebook-3" transform="translate(3.000000, 3.000000)" fill-rule="nonzero">
-                        <circle id="Oval" fill="#3C5A9A" cx="29.5091719" cy="29.4927506" r="29.4882047"></circle>
-                        <path d="M39.0974944,9.05587273 L32.5651312,9.05587273 C28.6886088,9.05587273 24.3768224,10.6862851 24.3768224,16.3054653 C24.395747,18.2634019 24.3768224,20.1385313 24.3768224,22.2488655 L19.8922122,22.2488655 L19.8922122,29.3852113 L24.5156022,29.3852113 L24.5156022,49.9295284 L33.0113092,49.9295284 L33.0113092,29.2496356 L38.6187742,29.2496356 L39.1261316,22.2288395 L32.8649196,22.2288395 C32.8649196,22.2288395 32.8789377,19.1056932 32.8649196,18.1987181 C32.8649196,15.9781412 35.1755132,16.1053059 35.3144932,16.1053059 C36.4140178,16.1053059 38.5518876,16.1085101 39.1006986,16.1053059 L39.1006986,9.05587273 L39.0974944,9.05587273 L39.0974944,9.05587273 Z" id="Path" fill="#FFFFFF"></path>
-                      </g>
-                    </g>
-                  </svg>
-                </a>
-              </div>
-              <div class="col-3 px-1">
-                <a class="btn btn-outline-light w-100" href="javascript:;">
-                  <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="apple-black" transform="translate(7.000000, 0.564551)" fill="#000000" fill-rule="nonzero">
-                        <path d="M40.9233048,32.8428307 C41.0078713,42.0741676 48.9124247,45.146088 49,45.1851909 C48.9331634,45.4017274 47.7369821,49.5628653 44.835501,53.8610269 C42.3271952,57.5771105 39.7241148,61.2793611 35.6233362,61.356042 C31.5939073,61.431307 30.2982233,58.9340578 25.6914424,58.9340578 C21.0860585,58.9340578 19.6464932,61.27947 15.8321878,61.4314159 C11.8738936,61.5833617 8.85958554,57.4131833 6.33064852,53.7107148 C1.16284874,46.1373849 -2.78641926,32.3103122 2.51645059,22.9768066 C5.15080028,18.3417501 9.85858819,15.4066355 14.9684701,15.3313705 C18.8554146,15.2562145 22.5241194,17.9820905 24.9003639,17.9820905 C27.275104,17.9820905 31.733383,14.7039812 36.4203248,15.1854154 C38.3824403,15.2681959 43.8902255,15.9888223 47.4267616,21.2362369 C47.1417927,21.4153043 40.8549638,25.1251794 40.9233048,32.8428307 M33.3504628,10.1750144 C35.4519466,7.59650964 36.8663676,4.00699306 36.4804992,0.435448578 C33.4513624,0.558856931 29.7884601,2.48154382 27.6157341,5.05863265 C25.6685547,7.34076135 23.9632549,10.9934525 24.4233742,14.4943068 C27.7996959,14.7590956 31.2488715,12.7551531 33.3504628,10.1750144" id="Shape"></path>
-                      </g>
-                    </g>
-                  </svg>
-                </a>
-              </div>
-              <div class="col-3 me-auto px-1">
-                <a class="btn btn-outline-light w-100" href="javascript:;">
-                  <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="google-icon" transform="translate(3.000000, 2.000000)" fill-rule="nonzero">
-                        <path d="M57.0239954,25.2765209 C57.0239954,23.620431 56.8814348,21.939466 56.5727536,20.3127886 L29.0639843,20.3127886 L29.0639843,30.2465317 L44.8509798,30.2465317 C44.1233181,34.0034747 41.8065754,37.1270844 38.4465043,38.9597592 L38.4465043,45.1308989 L47.6120028,45.1308989 C53.0245397,40.2131534 57.0239954,33.2014901 57.0239954,25.2765209" id="Path" fill="#4285F4"></path>
-                        <path d="M29.0639843,50.5584212 C36.8506106,50.5584212 43.3252786,47.9961436 47.6120028,43.4852307 L38.4465043,38.9597592 C36.2680347,40.1834436 33.558546,40.8177011 30.6592581,40.7587443 C23.0595234,40.7587443 16.7254933,35.896815 14.5176721,29.1230182 L5.06201555,29.1230182 L5.06201555,35.4687589 C9.61330466,44.5074234 18.8594914,50.5584212 29.0639843,50.5584212" id="Path" fill="#34A853"></path>
-                        <path d="M14.5176721,29.1230182 C13.4271251,25.36675 13.4271251,21.2544866 14.5176721,17.4982187 L14.5176721,11.152478 C6.48699383,20.9801557 6.48699383,33.6410809 14.5176721,43.4687587 L14.5176721,29.1230182" id="Path" fill="#FBBC05"></path>
-                        <path d="M29.0639843,11.5597443 C32.0918534,11.508182 35.035663,12.5994478 37.2990154,14.6172156 L47.822299,4.09393656 C42.5738355,-0.564305694 35.0268565,-2.63108536 27.9333195,0.0450892594 C18.7288265,0.0450892594 9.61330466,6.09608699 5.06201555,15.1347515 L14.5176721,17.5092826 C16.7301378,10.7354858 23.0595234,5.87355657 30.6592581,5.87355657 L29.0639843,11.5597443" id="Path" fill="#EA4335"></path>
-                      </g>
-                    </g>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div class="card-body">
-              <form action="{% url 'register_attempt' %}" role="form text-left" method="POST">
+<p class="register-subtitle">
+
+  Create your account to get started
+  with GPS Toller.
+
+</p>
+
+
+<form action="{% url 'register_attempt' %}" method="POST" class="register-form">
+
                 {% csrf_token %}
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon" name="username" required>
+<label for="username">
+  Name
+</label>
+
+<div class="register-input">
+
+  <i class="fa-regular fa-user"></i>
+
+  <input id="username" type="text" name="username" placeholder="Enter your name" autocomplete="name" required>
+
                 </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="email" required>
+<label for="register-email">
+  Email
+</label>
+<div class="register-input">
+
+  <i class="fa-regular fa-envelope"></i>
+
+  <input id="register-email" type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+
                 </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" name="password" required>
+<label for="register-password">
+  Password
+</label>
+
+<div class="register-input">
+
+  <i class="fa-solid fa-lock"></i>
+
+  <input id="register-password" type="password" name="password" placeholder="Create a password"
+    autocomplete="new-password" required>
+
                 </div>
-                <div class="form-check form-check-info text-left">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                  <label class="form-check-label" for="flexCheckDefault">
-                    I agree the <a href="" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                  </label>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
-                </div>
-                <p class="text-sm mt-3 mb-0">Already have an account? <a href="{% url 'login_attempt' %}" class="text-dark font-weight-bolder">Sign in</a></p>
-              </form>              
-            </div>
-          </div>
-        </div>
-      </div>
+<label class="terms-check">
+
+  <input type="checkbox" name="terms" required>
+
+  <span>
+
+    I agree to the
+    <a href="#">
+      Terms and Conditions
+    </a>
+
+  </span>
+
+</label>
+
+
+<button type="submit" class="full-gold-button register-button">
+
+  Create Account
+
+  <i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+
+</form>
+<p class="login-link">
+
+  Already have an account?
+
+  <a href="{% url 'login_attempt' %}">
+    Sign in
+  </a>
+
+</p>
+
+
+</section>
+
     </div>
-  </section>
-  <!--   Core JS Files   -->
-  <script src="{% static '/js/core/popper.min.js' %}"></script>
-  <script src="{% static '/js/core/bootstrap.min.js' %}"></script>
-  <script src="{% static '/js/plugins/perfect-scrollbar.min.js' %}"></script>
-  <script src="{% static '/js/plugins/smooth-scrollbar.min.js' %}"></script>
-  <script src="{% static '/js/soft-ui-dashboard.min.js?v=1.0.3' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</div>
+{% endblock %}
 
 
-  
-  <script>
-    {% if messages %}
-    {% for message in messages %}
-    Swal.fire({
-        title: '{{ message.tags|capfirst }}',
-        text: '{{ message }}',
-        icon: '{{ message.tags }}',
-        background: '#1c1e25',
-        color: 'white',
-        confirmButtonColor: '#272a34',
-        iconColor: '#f39422',
-        confirmButtonText: 'OK',
-        allowOutsideClick: false,
-        allowEscapeKey: false
-    });
-    {% endfor %}
-    {% endif %}
+{% block extra_js %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+
+<script>
+
+  {% for message in messages %}
+
+  Swal.fire({
+
+  title: '{{ message.tags|capfirst }}',
+
+  text: '{{ message|escapejs }}',
+
+  icon: '{{ message.tags }}',
+
+  background: '#111111',
+
+  color: '#ffffff',
+
+  confirmButtonColor: '#d4af37',
+
+  iconColor: '#d4af37',
+
+  confirmButtonText: 'OK',
+
+  allowOutsideClick: false,
+
+  allowEscapeKey: false
+
+});
+
+  {% endfor %}
 
 </script>
 
-</body>
+{% endif %}
 
-</html>
+{% endblock %}

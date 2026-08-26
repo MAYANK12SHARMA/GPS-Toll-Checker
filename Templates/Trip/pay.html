@@ -1,16 +1,1174 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<title>GPS Toller | Payment</title>
+
+<link rel="icon" type="image/png" href="{% static 'img/logo1.png' %}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 25px;
+
+        background: #050505;
+        color: #ffffff;
+
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .payment-wrapper {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    .payment-card {
+        background: #111111;
+
+        border: 1px solid #2b2b2b;
+
+        border-radius: 20px;
+
+        overflow: hidden;
+
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    .payment-header {
+        padding: 28px;
+
+        background: #080808;
+
+        border-bottom: 1px solid #292929;
+
+        text-align: center;
+    }
+
+    .logo {
+        width: 65px;
+        height: 65px;
+
+        object-fit: contain;
+
+        margin-bottom: 12px;
+    }
+
+    .brand {
+        font-size: 23px;
+        font-weight: 800;
+
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        margin-top: 5px;
+
+        color: #d4af37;
+
+        font-size: 10px;
+        font-weight: 700;
+
+        letter-spacing: 2px;
+    }
+
+    .payment-body {
+        padding: 30px;
+    }
+
+    .payment-title {
+        margin: 0;
+
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .payment-description {
+        margin: 8px 0 25px;
+
+        color: #999999;
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .trip-details {
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-bottom: 25px;
+    }
+
+    .detail-row {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+
+        padding: 13px 15px;
+
+        background: #181818;
+
+        border: 1px solid #292929;
+
+        border-radius: 10px;
+    }
+
+    .detail-label {
+        color: #999999;
+
+        font-size: 12px;
+    }
+
+    .detail-value {
+        color: #ffffff;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        text-align: right;
+
+        word-break: break-word;
+    }
+
+    .amount-box {
+        margin-top: 20px;
+
+        padding: 20px;
+
+        background: rgba(212, 175, 55, 0.08);
+
+        border: 1px solid rgba(212, 175, 55, 0.35);
+
+        border-radius: 14px;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+    }
+
+    .amount-label {
+        color: #c5c5c5;
+
+        font-size: 13px;
+    }
+
+    .amount {
+        color: #d4af37;
+
+        font-size: 25px;
+
+        font-weight: 800;
+    }
+
+    .pay-button {
+        width: 100%;
+
+        margin-top: 25px;
+
+        padding: 15px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        background: #d4af37;
+
+        color: #111111;
+
+        font-size: 14px;
+
+        font-weight: 800;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .pay-button:hover {
+        background: #e4c65c;
+
+        transform: translateY(-1px);
+
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.18);
+    }
+
+    .pay-button:disabled {
+        opacity: 0.6;
+
+        cursor: not-allowed;
+
+        transform: none;
+    }
+
+    .secure-payment {
+        margin-top: 18px;
+
+        text-align: center;
+
+        color: #777777;
+
+        font-size: 11px;
+    }
+
+    .secure-payment i {
+        color: #22c55e;
+
+        margin-right: 5px;
+    }
+
+    .back-link {
+        display: block;
+
+        margin-top: 20px;
+
+        text-align: center;
+
+        color: #999999;
+
+        font-size: 12px;
+
+        text-decoration: none;
+    }
+
+    .back-link:hover {
+        color: #d4af37;
+    }
+
+    @media (max-width: 600px) {
+
+        body {
+            padding: 15px;
+        }
+
+        .payment-body {
+            padding: 22px;
+        }
+
+        .detail-row {
+            align-items: flex-start;
+
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+        .detail-value {
+            text-align: left;
+        }
+    }
+</style>
+
 </head>
+
 <body>
-    Pay the bills 
+<div class="payment-wrapper">
 
-    {{ username }}
-    {{ filename }}
+    <div class="payment-card">
 
-    <a href="{% url 'paybill' username filename %}">Back to home</a>
+        <!-- HEADER -->
+
+        <div class="payment-header">
+
+            <img src="{% static 'img/logo1.png' %}" class="logo" alt="GPS Toller">
+
+            <div class="brand">
+                GPS TOLLER
+            </div>
+
+            <div class="subtitle">
+                SMART MOBILITY
+            </div>
+
+        </div>
+
+
+        <!-- BODY -->
+
+        <div class="payment-body">
+
+            <h1 class="payment-title">
+                Complete Payment
+            </h1>
+
+            <p class="payment-description">
+                Complete your toll and journey payment securely using Razorpay.
+            </p>
+
+
+            <!-- TRIP DETAILS -->
+
+            <div class="trip-details">
+
+                <!-- CUSTOMER -->
+
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        Customer
+                    </span>
+
+                    <span class="detail-value">
+                        {{ customer_name|default:username|default:"Mayank Sharma" }}
+                    </span>
+
+                </div>
+
+
+                <!-- INVOICE -->
+
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        Invoice
+                    </span>
+
+                    <span class="detail-value">
+                        {{ filename }}
+                    </span>
+                    
+                    </div>
+                    
+                    
+                    <!-- VEHICLE -->
+                    
+                    <div class="detail-row">
+                    
+                        <span class="detail-label">
+                            Vehicle
+                        </span>
+                    
+                        <span class="detail-value">
+                            {{ vehicle_number|default:"Not Available" }}
+                        </span>
+                    
+                    </div>
+                    
+                    </div>
+                    
+                    
+                    <!-- AMOUNT -->
+                    
+                    <div class="amount-box">
+                    
+                        <span class="amount-label">
+                            Amount Payable
+                        </span>
+                    
+                        <span class="amount">
+                            ₹{{ amount|default:"100.00" }}
+                        </span>
+                    
+                    </div>
+                    
+                    
+                    <!-- PAY BUTTON -->
+                    
+                    <button id="pay-button" class="pay-button" type="button">
+                        <i class="fa-solid fa-lock"></i>
+                        Pay ₹{{ amount|default:"100.00" }}
+                    </button>
+                    
+                    
+                    <div class="secure-payment">
+                    
+                        <i class="fa-solid fa-shield-halved"></i>
+                    
+                        Secure payment powered by Razorpay
+                    
+                    </div>
+                    
+                    
+                    <a href="{% url 'pricing' username=username %}" class="back-link">
+                        ← Back
+                    </a>
+                    
+                    </div>
+                    
+                    </div>
+                    
+                    </div>
+                    
+                    
+                    <!-- CSRF -->
+                    
+                    <form style="display:none;">
+                        {% csrf_token %}
+                    </form>
+                    
+                    
+                    <!-- RAZORPAY -->
+                    
+                    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                    
+                    
+                    <script>
+
+                        /*
+                        ============================================================
+                        PAYMENT CONFIGURATION
+                        ============================================================
+                        */
+
+                        const payButton = document.getElementById("pay-button");
+
+                        const razorpayKeyId =
+                            "{{ razorpay_key_id|escapejs }}";
+
+                        const razorpayOrderId =
+                            "{{ razorpay_order_id|escapejs }}";
+
+                        const amountInPaise =
+                            "{{ amount_in_paise|escapejs }}";
+
+                        const username =
+                            "{{ username|escapejs }}";
+
+                        const filename =
+                            "{{ filename|escapejs }}";
+
+
+                        console.log("========== RAZORPAY DEBUG ==========");
+
+                        console.log("Razorpay Key ID:", razorpayKeyId);
+
+                        console.log("Razorpay Order ID:", razorpayOrderId);
+
+                        console.log("Amount in Paise:", amountInPaise);
+
+                        console.log("Username:", username);
+
+                        console.log("Filename:", filename);
+
+                        console.log("====================================");
+
+
+                        /*
+                        ============================================================
+                        GET CSRF TOKEN
+                        ============================================================
+                        */
+
+                        function getCookie(name) {
+
+                            let cookieValue = null;
+
+                            if (document.cookie && document.cookie !== "") {
+
+                                const cookies = document.cookie.split(";");
+
+                                for (let i = 0; i < cookies.length; i++) {
+
+                                    const cookie = cookies[i].trim();
+
+                                    if (cookie.substring(0, name.length + 1) === (name + "=")) {
+
+                                        cookieValue =
+                                            decodeURIComponent(
+                                                cookie.substring(name.length + 1)
+                                            );
+
+                                        break;
+                                    }
+                                }
+                            }
+
+                            return cookieValue;
+                        }
+
+
+                        /*
+                        ============================================================
+                        OPEN RAZORPAY
+                        ============================================================
+                        */
+
+                        payButton.addEventListener("click", function () {
+
+                            console.log("Pay button clicked.");
+
+                            /*
+                            Validate order ID before opening Razorpay.
+                            */
+
+                            if (!razorpayOrderId) {
+
+                                console.error(
+                                    "ERROR: Razorpay order ID is missing."
+                                );
+
+                                alert(
+                                    "Payment order was not created correctly. Please contact support."
+                                );
+
+                                return;
+                            }
+
+
+                            if (!razorpayKeyId) {
+
+                                console.error(
+                                    "ERROR: Razorpay key ID is missing."
+                                );
+
+                                alert(
+                                    "Razorpay configuration is missing."
+                                );
+
+                                return;
+                            }
+
+
+                            if (!amountInPaise) {
+
+                                console.error(
+                                    "ERROR: Amount in paise is missing."
+                                );
+
+                                alert(
+                                    "Payment amount is missing."
+                                );
+
+                                return;
+                            }
+
+
+                            payButton.disabled = true;
+
+                            payButton.innerHTML =
+                                '<i class="fa-solid fa-spinner fa-spin"></i> Opening Payment...';
+
+
+                            /*
+                            ========================================================
+                            RAZORPAY OPTIONS
+                            ========================================================
+                            */
+
+                            const options = {
+
+                                key: razorpayKeyId,
+
+                                amount: amountInPaise,
+
+                                currency: "INR",
+
+                                name: "GPS Toller",
+
+                                description: "Toll & Journey Payment",
+
+                                order_id: razorpayOrderId,
+
+                                prefill: {
+
+                                    name:
+                                        "{{ customer_name|default:username|default:'Mayank Sharma'|escapejs }}",
+
+                                    email:
+                                        "{{ user.email|default:''|escapejs }}"
+
+                                },
+
+                                theme: {
+
+                                    color: "#d4af37"
+
+                                },
+
+
+                                /*
+                                ====================================================
+                                SUCCESS HANDLER
+                                ====================================================
+                                */
+
+                                handler: function (response) {
+
+                                    console.log(
+                                        "Razorpay payment successful."
+                                    );
+
+                                    console.log(
+                                        "Payment ID:",
+                                        response.razorpay_payment_id
+                                    );
+
+                                    console.log(
+                                        "Order ID:",
+                                        response.razorpay_order_id
+                                    );
+
+                                    console.log(
+                                        "Signature received:",
+                                        response.razorpay_signature
+                                            ? "YES"
+                                            : "NO"
+                                    );
+
+
+                                    verifyPayment(response);
+
+                                },
+
+
+                                /*
+                                ====================================================
+                                MODAL DISMISS
+                                ====================================================
+                                */
+
+                                modal: {
+
+                                    ondismiss: function () {
+
+                                        console.log(
+                                            "Razorpay checkout closed by user."
+                                        );
+
+                                        resetPayButton();
+
+                                    }
+
+                                }
+
+                            };
+
+
+                            console.log(
+                                "Opening Razorpay with order:",
+                                razorpayOrderId
+                            );
+
+
+                            try {
+
+                                const razorpay =
+                                    new Razorpay(options);
+
+
+                                /*
+                                ====================================================
+                                PAYMENT FAILED
+                                ====================================================
+                                */
+
+                                razorpay.on(
+                                    "payment.failed",
+                                    function (response) {
+
+                                        console.error(
+                                            "Razorpay payment failed:",
+                                            response
+                                        );
+
+                                        if (response.error) {
+
+                                            console.error(
+                                                "Error code:",
+                                                response.error.code
+                                            );
+
+                                            console.error(
+                                                "Error description:",
+                                                response.error.description
+                                            );
+
+                                            console.error(
+                                                "Error reason:",
+                                                response.error.reason
+                                            );
+
+                                            console.error(
+                                                "Error source:",
+                                                response.error.source
+                                            );
+
+                                            console.error(
+                                                "Error step:",
+                                                response.error.step
+                                            );
+
+                                        }
+
+                                        alert(
+                                            "Payment failed. Please try again."
+                                        );
+
+                                        resetPayButton();
+
+                                    }
+                                );
+
+
+                                razorpay.open();
+
+                            }
+                            catch (error) {
+
+                                console.error(
+                                    "Could not initialize Razorpay:",
+                                    error
+                                );
+
+                                alert(
+                                    "Unable to open Razorpay payment."
+                                );
+
+                                resetPayButton();
+
+                            }
+
+                        });
+
+
+                        /*
+                        ============================================================
+                        RESET BUTTON
+                        ============================================================
+                        */
+
+                        function resetPayButton() {
+
+                            payButton.disabled = false;
+
+                            payButton.innerHTML =
+                                '<i class="fa-solid fa-lock"></i> Pay ₹{{ amount|default:"100.00" }}';
+
+                        }
+
+
+                        /*
+                        ============================================================
+                        VERIFY PAYMENT
+                        ============================================================
+                        */
+
+                        async function verifyPayment(response) {
+
+                            console.log(
+                                "========== PAYMENT VERIFICATION =========="
+                            );
+
+
+                            /*
+                            Validate Razorpay response.
+                            */
+
+                            if (!response) {
+
+                                console.error(
+                                    "No Razorpay response received."
+                                );
+
+                                alert(
+                                    "Invalid payment response."
+                                );
+
+                                resetPayButton();
+
+                                return;
+                            }
+
+
+                            if (!response.razorpay_payment_id) {
+
+                                console.error(
+                                    "Missing razorpay_payment_id."
+                                );
+
+                                alert(
+                                    "Payment ID is missing."
+                                );
+
+                                resetPayButton();
+
+                                return;
+                            }
+
+
+                            if (!response.razorpay_order_id) {
+
+                                console.error(
+                                    "Missing razorpay_order_id."
+                                );
+
+                                alert(
+                                    "Order ID is missing."
+                                );
+
+                                resetPayButton();
+
+                                return;
+                            }
+
+
+                            if (!response.razorpay_signature) {
+
+                                console.error(
+                                    "Missing razorpay_signature."
+                                );
+
+                                alert(
+                                    "Payment signature is missing."
+                                );
+
+                                resetPayButton();
+
+                                return;
+                            }
+
+
+                            console.log(
+                                "Payment ID:",
+                                response.razorpay_payment_id
+                            );
+
+                console.log(
+                    "Order ID:",
+                    response.razorpay_order_id
+                );
+
+                console.log(
+                    "Signature received: YES"
+                );
+
+
+                /*
+                ========================================================
+                FORM DATA
+                ========================================================
+                */
+
+                const formData = new FormData();
+
+
+                formData.append(
+                    "razorpay_payment_id",
+                    response.razorpay_payment_id
+                );
+
+
+                formData.append(
+                    "razorpay_order_id",
+                    response.razorpay_order_id
+                );
+
+
+                formData.append(
+                    "razorpay_signature",
+                    response.razorpay_signature
+                );
+
+
+                formData.append(
+                    "username",
+                    username
+                );
+
+
+                formData.append(
+                    "filename",
+                    filename
+                );
+
+
+                /*
+                ========================================================
+                CSRF
+                ========================================================
+                */
+
+                const csrfToken =
+                    getCookie("csrftoken");
+
+
+                if (!csrfToken) {
+
+                    console.error(
+                        "CSRF token not found."
+                    );
+
+                    alert(
+                        "Security token missing. Please refresh the page and try again."
+                    );
+
+                    resetPayButton();
+
+                    return;
+                }
+
+
+                console.log(
+                    "CSRF token found: YES"
+                );
+
+
+                /*
+                ========================================================
+                VERIFY URL
+                ========================================================
+                */
+
+                const verifyUrl =
+                    "{% url 'verify_payment' %}";
+
+
+                console.log(
+                    "Verification URL:",
+                    verifyUrl
+                );
+
+
+                payButton.disabled = true;
+
+                payButton.innerHTML =
+                    '<i class="fa-solid fa-spinner fa-spin"></i> Verifying Payment...';
+
+
+                /*
+                ========================================================
+                SEND TO DJANGO
+                ========================================================
+                */
+
+                try {
+
+                    const responseFromServer =
+                        await fetch(
+                            verifyUrl,
+                            {
+
+                                method: "POST",
+
+                                headers: {
+
+                                    "X-CSRFToken":
+                                        csrfToken,
+
+                                    "X-Requested-With":
+                                        "XMLHttpRequest"
+
+                                },
+
+                                body: formData,
+
+                                credentials: "same-origin"
+
+                            }
+                        );
+
+
+                    console.log(
+                        "Verification HTTP status:",
+                        responseFromServer.status
+                    );
+
+
+                    /*
+                    ====================================================
+                    GET RAW RESPONSE FIRST
+                    ====================================================
+                    */
+
+                    const rawText =
+                        await responseFromServer.text();
+
+
+                    console.log(
+                        "Verification server response:",
+                        rawText
+                    );
+
+
+                    /*
+                    ====================================================
+                    TRY JSON
+                    ====================================================
+                    */
+
+                    let data = null;
+
+
+                    try {
+
+                        data =
+                            JSON.parse(rawText);
+
+                    }
+                    catch (jsonError) {
+
+                        console.error(
+                            "Server did not return valid JSON."
+                        );
+
+                        console.error(
+                            "Raw server response:",
+                            rawText
+                        );
+
+
+                        alert(
+                            "Payment verification failed because the server returned an invalid response."
+                        );
+
+                        resetPayButton();
+
+                        return;
+                    }
+
+
+                    /*
+                    ====================================================
+                    SERVER ERROR
+                    ====================================================
+                    */
+
+                    if (!responseFromServer.ok) {
+
+                        console.error(
+                            "Django verification returned HTTP error:",
+                            responseFromServer.status
+                        );
+
+                        console.error(
+                            "Server data:",
+                            data
+                        );
+
+
+                        alert(
+                            data.message ||
+                            data.error ||
+                            "Payment verification failed on the server."
+                        );
+
+
+                        resetPayButton();
+
+                        return;
+                    }
+
+
+                    /*
+                    ====================================================
+                    PAYMENT SUCCESS
+                    ====================================================
+                    */
+
+                    if (data.success) {
+
+                        console.log(
+                            "Payment verification SUCCESS."
+                        );
+
+                        console.log(
+                            "Redirect URL:",
+                            data.redirect_url
+                        );
+
+
+                        payButton.innerHTML =
+                            '<i class="fa-solid fa-check"></i> Payment Successful';
+
+
+                        if (data.redirect_url) {
+
+                            window.location.href =
+                                data.redirect_url;
+
+                        }
+                        else {
+
+                            console.error(
+                                "Payment succeeded but redirect_url is missing."
+                            );
+
+                            alert(
+                                "Payment successful, but redirect URL is missing."
+                            );
+
+                            resetPayButton();
+
+                        }
+
+                    }
+
+                    /*
+                    ====================================================
+                    PAYMENT FAILURE
+                    ====================================================
+                    */
+
+                    else {
+
+                        console.error(
+                            "Payment verification failed:",
+                            data
+                        );
+
+
+                        alert(
+                            data.message ||
+                            data.error ||
+                            "Payment verification failed."
+                        );
+
+
+                        resetPayButton();
+
+                    }
+
+                }
+                catch (error) {
+
+                    console.error(
+                        "Network/fetch error during payment verification:",
+                        error
+                    );
+
+
+                    alert(
+                        "Unable to contact the payment verification server."
+                    );
+
+
+                    resetPayButton();
+
+                }
+
+
+                console.log(
+                    "=========================================="
+                );
+
+            }
+
+        </script>
+
 </body>
+
 </html>
